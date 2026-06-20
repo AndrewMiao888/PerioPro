@@ -8317,7 +8317,7 @@ const europiumData = {
   electrophilicityIndex: 0.13,
   polarizability: 22.8, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.99, // V (For Eu3+ + 3e- -> Eu; Eu3+ + e- -> Eu2+ is -0.35 V)
-  flameTestColor: "Crimson-red emission lines (Masked heavily by immediate oxide ignition)"
+  flameTestColor: "Crimson-red emission lines (Masked heavily by immediate oxide ignition)",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
