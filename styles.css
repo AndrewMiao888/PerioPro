@@ -1,0 +1,1679 @@
+/* --- DYNAMIC RANKED LIST VISUAL STATES --- */
+        .element-node-box {
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        
+        /* Hide all nodes that do not match search criteria or selected dropdown filters */
+        .node-dimmed-state {
+            display: none !important;
+        }
+
+        /* Secondary partial background property match layout styling */
+        .search-match-secondary {
+            opacity: 0.85 !important;
+            border: 1px dashed #555 !important;
+        }
+
+        /* Primary exact keyword match (Brightest highlight priority state) */
+        .search-match-primary {
+            opacity: 1 !important;
+            border: 2px solid #ffffff !important;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+        }/* --- TIED MINI CORNER DESIGN TOP BAR --- */
+        .search-controls-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 12px;
+            width: 100%;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .search-bar-input-column,
+        .search-dropdown-select-column {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            position: relative;
+        }
+
+        .search-control-label {
+            font-size: 0.7rem;
+            color: #666;
+            margin-bottom: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .search-controls-wrapper input[type="text"] {
+            width: 100%;
+            padding: 8px 12px;
+            background: #111;
+            border: 1px solid #222;
+            color: #fff;
+            border-radius: 4px;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 0.85rem;
+        }
+
+        .search-controls-wrapper input[type="text"]:focus {
+            border-color: #444;
+        }/* --- RELEVANCE RANKED LIST VIEW (CUTE BOXES PRESERVED) --- */
+        .periodic-matrix-grid.active-search-list-view {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 10px !important;
+            max-width: 500px;
+            margin: 0 auto !important;
+        }
+
+        /* Continuous row item wrapper format containing the pristine square box */
+        .periodic-matrix-grid.active-search-list-view .element-node-box {
+            grid-area: auto !important;
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 16px !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            width: 100% !important;
+            height: auto !important;
+            padding: 4px 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Forces the inner visual element layout block to remain a tiny square */
+        .periodic-matrix-grid.active-search-list-view .element-node-box > *:not(.search-meta-row-info) {
+            width: 60px !important;
+            height: 60px !important;
+            min-width: 60px !important;
+            flex-shrink: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: #141414;
+            border: 1px solid #2e2e2e;
+            border-radius: 6px;
+            box-sizing: border-box !important;
+        }
+
+        /* Container for text values matching on the right side */
+        .periodic-matrix-grid.active-search-list-view .element-node-box .search-meta-row-info {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+            color: #aaa !important;
+            font-size: 0.75rem !important;
+        }
+
+        .periodic-matrix-grid.active-search-list-view .element-node-box .search-meta-row-info span {
+            background: #111;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid #222;
+            white-space: nowrap;
+        }
+
+        /* Hide completely irrelevant nodes during search */
+        .periodic-matrix-grid.active-search-list-view .element-node-box.node-dimmed-state {
+            display: none !important;
+        }
+
+        /* --- SEARCH SHOW ALL ACTION CONTAINER --- */
+        .search-show-all-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            padding: 8px 0;
+        }
+
+        .search-show-all-btn {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #ccc;
+            padding: 8px 24px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .search-show-all-btn:hover {
+            background: #252525;
+            border-color: #555;
+            color: #fff;
+        }
+
+        /* Hide completely irrelevant nodes during search */
+        .periodic-matrix-grid.active-search-list-view .element-node-box.node-dimmed-state {
+            display: none !important;
+        }
+
+        /* --- SEARCH SHOW ALL ACTION CONTAINER --- */
+        .search-show-all-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            padding: 8px 0;
+        }
+
+        .search-show-all-btn {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #ccc;
+            padding: 8px 24px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .search-show-all-btn:hover {
+            background: #252525;
+            border-color: #555;
+            color: #fff;
+        }
+
+        /* --- MODERN CUSTOM CHECKBOX DROPDOWN DESIGN --- */
+        .custom-checkbox-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-toggle-btn {
+            width: 100%;
+            padding: 10px;
+            background: #141414;
+            border: 1px solid #2e2e2e;
+            color: #fff;
+            border-radius: 4px;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            outline: none;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+
+        .dropdown-toggle-btn:hover {
+            background: #1c1c1c;
+            border-color: #3b3b3b;
+        }
+
+        .dropdown-caret {
+            font-size: 0.65rem;
+            color: #666;
+            transition: transform 0.15s ease;
+        }
+
+        .custom-checkbox-dropdown.is-open .dropdown-caret {
+            transform: rotate(180deg);
+        }
+
+        /* --- SQUEEZED SYSTEM DASHBOARD LAYOUT DIMENSIONS --- */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 290px; /* Reduced sidebar column slightly to clear 30px viewport space */
+    gap: 16px;
+    align-items: start;
+    max-width: 100%;
+}
+
+.periodic-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(38px, 1fr)); /* Slightly narrowed min-column width bounds */
+    grid-template-rows: repeat(10, minmax(44px, 1fr));
+    gap: 4px;
+}
+
+/* --- CHECKBOX ROW & LABEL COORDINATE ALIGNMENT --- */
+.dropdown-options-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Locks alignment of option items straight to the left-hand edge */
+.checkbox-option {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Locks all text elements cleanly to the left edge */
+    gap: 10px !important; /* Fixed crisp spacing gap between variables and checkboxes */
+    width: 100% !important;
+    padding: 8px 16px !important;
+    color: var(--text-main, #f9fafb);
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Keeps checkbox dimensions standard inside flex-containers */
+.checkbox-option input[type="checkbox"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0 !important; /* Prevents checkbox checkboxes from stretching vertically */
+    cursor: pointer;
+    accent-color: #06b6d4;
+}
+
+.checkbox-option:hover {
+    background-color: var(--bg-card-hover, #374151);
+}
+
+        .custom-checkbox-dropdown.is-open .dropdown-menu-panel {
+            display: block;
+        }
+
+        .dropdown-group-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #555;
+            padding: 8px 12px 4px 12px;
+            font-weight: 700;
+        }
+
+        .checkbox-option:hover {
+            background: #181818;
+            color: #fff;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            margin: 0;
+            cursor: pointer;
+            accent-color: #888;
+        }
+
+        /* --- DYNAMIC DROPDOWN SEARCH INPUT RULES --- */
+        .dropdown-search-input {
+            margin-bottom: 6px; 
+            padding: 6px; 
+            border-radius: 4px; 
+            border: 1px solid #444; 
+            background: #222; 
+            color: #fff; 
+            width: 100%; 
+            box-sizing: border-box;
+        }
+
+        /* --- STRESSLESS AUTOMATED MOBILE VIEWPORT SCALING CONTROL --- */
+        @media screen and (max-width: 1024px) {
+            body {
+                overflow-x: hidden;
+            }
+           /* ==========================================================================
+   COMPACT VIEWPORT CORE GRID CONTROLLERS
+   ========================================================================== */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 310px; /* Slimmed right sidebar panel allocation from 340px */
+    gap: 20px;
+    align-items: start;
+    max-width: 100%;
+}
+
+.scrollable-matrix-viewport {
+    width: 100%;
+    max-width: 100%;
+}
+
+.periodic-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(42px, 1fr)); /* Compressed horizontal node cell boundaries */
+    grid-template-rows: repeat(10, minmax(48px, 1fr));
+    gap: 4px; /* Reduced padding space lines */
+}
+        }
+        @media screen and (max-width: 600px) {
+            .periodic-matrix-grid {
+                transform: scale(0.55);
+                min-width: 1020px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .quiz-config-bar {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        /* --- DYNAMIC RANKED LIST VISUAL STATES --- */
+.active-search-list-view {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 800px !important; /* Prevents stretching too wide on desktop viewports */
+    margin: 0 auto !important;
+}
+
+/* Forces element cards out of their standard staggered table rows into a straight vertical column line */
+.active-search-list-view .element-node-box {
+    grid-row: auto !important;
+    grid-column: 1 / -1 !important; 
+    width: 100% !important;
+    height: auto !important;
+    min-height: 70px !important; /* Provides stable vertical room for non-truncating text blocks */
+    display: flex !important;
+    flex-direction: row !important; /* Horizontal inline structure for search list elements */
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 12px 20px !important;
+}
+
+/* --- CHECKBOX CONTAINER ALIGNMENT CORRECTION --- */
+.dropdown-menu-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+}
+
+.checkbox-option {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    padding: 8px 16px !important;
+    cursor: pointer;
+    text-align: left;
+    justify-content: flex-start; /* Aligns all text boxes to the left edge */
+}
+
+/* --- CLIPPED ELEMENT NAME TEXT & HOVER CONTROLLER --- */
+.name-string-display {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    display: block !important;
+    transition: all 0.15s ease-in-out;
+}
+
+/* Expand text fully into a single line layer on hover overlay */
+.element-node-box:hover .name-string-display {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    background: var(--bg-card-hover, #374151);
+    position: relative;
+    z-index: 10;
+}
+
+:root {
+    --bg-main: #090d16;
+    --bg-panel: #111827;
+    --bg-card: #1f2937;
+    --bg-card-hover: #374151;
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+    --accent: #06b6d4;
+    --accent-hover: #0891b2;
+    --success: #10b981;
+    --danger: #ef4444;
+    
+    /* Periodic Element Category Color Tokens */
+    --clr-nonmetal: #4ade80;
+    --clr-noble-gas: #c084fc;
+    --clr-alkali: #f87171;
+    --clr-alkaline: #fb923c;
+    --clr-metalloid: #facc15;
+    --clr-halogen: #60a5fa;
+    --clr-transition: #22d3ee;
+    --clr-post-transition: #2dd4bf;
+    --clr-lanthanide: #f472b6;
+    --clr-actinide: #fb7185;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    padding: 24px;
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-user-select: normal;
+    user-select: normal;
+}
+
+header {
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--bg-card);
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+header h1 {
+    font-size: 2.25rem;
+    color: var(--text-main);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+}
+
+header h1 span {
+    color: var(--accent);
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+.stats-badge {
+    background: var(--bg-panel);
+    padding: 10px 20px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid var(--bg-card);
+    color: var(--accent);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.stats-badge.badge-faulted {
+    color: var(--danger) !important;
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 1280px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr 480px;
+    }
+}
+
+.panel {
+    background-color: var(--bg-panel);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--bg-card);
+    padding-bottom: 12px;
+    color: var(--text-main);
+}
+
+.panel-subheading {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.search-controls-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+    .search-controls-wrapper {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--bg-card);
+    border-radius: 10px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+
+.scrollable-matrix-viewport {
+    overflow-x: auto;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.periodic-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(68px, 1fr));
+    grid-template-rows: repeat(10, minmax(78px, 1fr));
+    gap: 6px;
+    width: 100%;
+    min-width: 1250px;
+}
+
+.element-node-box {
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.element-node-box:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.7);
+    z-index: 40;
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--bg-card-hover);
+}
+
+.element-node-box.selected-active {
+    border: 2px solid var(--accent) !important;
+    box-shadow: 0 0 15px 2px rgba(6, 182, 212, 0.3);
+    background-color: var(--bg-card-hover);
+}
+
+.element-node-box .top-metadata-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.element-node-box .atomic-index-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.element-node-box .symbol-core-display {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1;
+    margin: 2px 0;
+    letter-spacing: -0.03em;
+}
+
+.element-node-box .name-string-display {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.element-node-box .variable-badge-display {
+    font-size: 0.65rem;
+    text-align: right;
+    font-weight: 600;
+    color: var(--accent);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Category Classification Borders */
+.cat-nonmetal { border-left: 3.5px solid var(--clr-nonmetal); }
+.cat-noble-gas { border-left: 3.5px solid var(--clr-noble-gas); }
+.cat-alkali-metal { border-left: 3.5px solid var(--clr-alkali); }
+.cat-alkaline-earth-metal { border-left: 3.5px solid var(--clr-alkaline); }
+.cat-metalloid { border-left: 3.5px solid var(--clr-metalloid); }
+.cat-halogen { border-left: 3.5px solid var(--clr-halogen); }
+.cat-transition-metal { border-left: 3.5px solid var(--clr-transition); }
+.cat-post-transition-metal { border-left: 3.5px solid var(--clr-post-transition); }
+.cat-lanthanide { border-left: 3.5px solid var(--clr-lanthanide); }
+.cat-actinide { border-left: 3.5px solid var(--clr-actinide); }
+
+.lanthanide-actinide-spacer {
+    grid-column: span 18;
+    height: 16px;
+}
+
+.node-dimmed-state {
+    opacity: 0.15;
+    transform: scale(0.96);
+    pointer-events: none;
+}
+
+.sidebar-panel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.inspector-hero-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(145deg, var(--bg-card), rgba(17, 24, 39, 0.6));
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.inspector-hero-title h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+}
+
+.inspector-hero-title p {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.inspector-hero-glyph {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--text-main);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    opacity: 0.9;
+}
+
+.property-variable-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.property-variable-tile {
+    background-color: var(--bg-main);
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--bg-card);
+    transition: border-color 0.2s ease;
+}
+
+.property-variable-tile:hover {
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.property-variable-tile.span-full-width {
+    grid-column: span 2;
+}
+
+.property-variable-tile label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.property-variable-tile span {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    word-break: break-word;
+}
+
+.empty-inspector-fallback {
+    color: var(--text-muted);
+    text-align: center;
+    padding: 60px 0;
+    font-size: 0.9rem;
+}
+
+.trend-chart-container {
+    margin-top: 8px;
+}
+
+.trend-chart-header {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trend-chart-header span:first-child {
+    color: var(--text-main);
+}
+
+#trend-chart-metric-indicator {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.trend-chart-viewport {
+    display: flex;
+    align-items: flex-end;
+    height: 140px;
+    background-color: var(--bg-main);
+    border-radius: 12px;
+    padding: 16px 12px 6px 12px;
+    gap: 2px;
+    border: 1px solid var(--bg-card);
+    overflow-x: auto;
+}
+
+.trend-chart-bar-node {
+    flex: 1;
+    min-width: 6px;
+    background-color: var(--accent);
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.75;
+}
+
+.trend-chart-bar-node:hover {
+    background-color: var(--text-main);
+    opacity: 1;
+}
+
+.trend-chart-bar-node.active-bar {
+    background-color: var(--clr-metalloid);
+    opacity: 1;
+}
+
+.trend-chart-bar-node:hover::after {
+    content: attr(data-tooltip-content);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    color: #000000;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+    z-index: 100;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 4px;
+}
+
+.quiz-engine-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.quiz-question-box {
+    background-color: var(--bg-main);
+    padding: 16px;
+    border-radius: 10px;
+    border-left: 4px solid var(--accent);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.quiz-option-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quiz-option-button {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--text-main);
+    padding: 14px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+.quiz-option-button:hover:not(:disabled) {
+    background-color: var(--bg-card-hover);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.quiz-option-button:focus {
+    outline: none;
+}
+
+.quiz-option-button.correct-answer {
+    background-color: var(--success) !important;
+    border-color: var(--success) !important;
+    color: #ffffff !important;
+}
+
+.quiz-option-button.wrong-answer {
+    background-color: var(--danger) !important;
+    border-color: var(--danger) !important;
+    color: #ffffff !important;
+}
+
+.quiz-prime-action-button {
+    background-color: var(--accent);
+    color: var(--bg-main);
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    text-align: center;
+}
+
+.quiz-prime-action-button:hover {
+    background-color: var(--accent-hover);
+}
+
+#quiz-streak-display {
+    font-size: 0.75rem;
+    background: var(--bg-main);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    color: var(--clr-metalloid);
+    border: 1px solid var(--bg-card);
+}
+
+.quiz-score-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.quiz-score-tile {
+    background-color: var(--bg-main);
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    border: 1px solid var(--bg-card);
+}
+
+.quiz-score-tile div {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-top: 2px;
+}
+
+#quiz-score-correct-counter {
+    color: var(--success);
+}
+
+#quiz-score-total-counter {
+    color: var(--accent);
+}
+
+.error-boundary-box {
+    grid-column: span 18;
+    padding: 32px;
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--danger);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.error-boundary-box h3 {
+    color: var(--danger);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.error-boundary-box p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Custom Quiz Preference Selection Header */
+.quiz-config-bar {
+    display: flex;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.config-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.config-group label {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+.quiz-select {
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+/* Hint Engine Modifiers */
+.quiz-hint-box {
+    margin-bottom: 16px;
+}
+.hint-toggle-btn {
+    background: none;
+    border: none;
+    color: #4dabf7;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+}
+.hint-content {
+    display: none;
+    background: rgba(77, 171, 247, 0.1);
+    border-left: 3px solid #4dabf7;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 0.95rem;
+    border-radius: 0 4px 4px 0;
+}
+.hint-content.visible {
+    display: block;
+}
+
+/* Comprehensive Explanation Hub Box */
+.explanation-viewport {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 16px;
+    margin: 20px 0;
+}
+.explanation-viewport h4 {
+    margin-top: 0;
+    color: #ffc078;
+}
+.verdict-banner {
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+.verdict-banner.pass { background: rgba(43, 192, 118, 0.2); color: #2bc076; }
+.verdict-banner.fail { background: rgba(250, 82, 82, 0.2); color: #fa5252; }
+.options-explanation-breakdown {
+    margin-top: 14px;
+}
+.options-explanation-breakdown h5 { margin-bottom: 6px; opacity: 0.8; }
+.options-explanation-breakdown ul { padding-left: 20px; margin: 0; }
+.options-explanation-breakdown li { margin-bottom: 6px; font-size: 0.9rem; }
+.lbl-ok { color: #2bc076; font-weight: bold; font-size: 0.8rem; margin-right: 4px;}
+.lbl-err { color: #fa5252; font-weight: bold; font-size: 0.8rem; margin-right: 4px;}
+
+/* ==========================================================================
+   EVALUATION SUBSYSTEM RUNTIME OVERRIDES
+   ========================================================================== */
+
+/* Safely hides the interactive hint and explanation containers on initial load */
+#quiz-hint-container,
+#quiz-explanation-hub {
+    display: none;
+}
+
+/* Framework classes for structural visibility handling */
+.hint-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.hint-content.visible {
+    display: block;
+    opacity: 1;
+}
+
+/* Standard state management rules used dynamically by the engine */
+.quiz-option-button.correct-answer {
+    background-color: #2e7d32 !important;
+    color: #ffffff !important;
+    border-color: #1b5e20 !important;
+}
+
+.quiz-option-button.wrong-answer {
+    background-color: #c62828 !important;
+    color: #ffffff !important;
+    border-color: #b71c1c !important;
+}
+
+/* Analysis summary feedback banners */
+.verdict-banner.pass {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.verdict-banner.fail {
+    color: #c62828;
+    font-weight: bold;
+}
+
+.lbl-ok {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.lbl-err {
+    color: #c62828;
+    font-weight: bold;
+}
+
+/* --- SEARCH CONTROL WRAPPER COMPONENT LAYOUT --- */
+.search-controls-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.search-controls-wrapper .search-modifier-instructions {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin: 2px 0;
+}
+
+.custom-checkbox-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-menu-panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--panel-bg, #111114);
+    border: 1px solid var(--border-dim, #222226);
+    border-radius: 4px;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.dropdown-menu-panel.active {
+    display: block;
+}
+
+.dropdown-reset-container {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-dim, #222226);
+}
+
+.filter-none-option {
+    font-weight: bold !important;
+}
+
+.no-results-message {
+    padding: 20px;
+    color: var(--text-muted, #888890);
+    text-align: center;
+    font-weight: bold;
+}
+
+.results-control-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-dim, #222226);
+}
+
+.results-stats-text {
+    font-size: 0.85rem;
+    color: var(--text-muted, #888890);
+}
+
+.toggle-results-btn {
+    padding: 4px 12px;
+    font-size: 0.8rem;
+}
+
+.results-vertical-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+}
+
+.results-row-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background: var(--panel-bg, #111114);
+    border: 1px solid var(--border-dim, #222226);
+    border-radius: 4px;
+    gap: 10px;
+}
+
+.results-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 200px;
+    flex: 1;
+}
+
+.results-item-title,
+.results-item-details,
+#search-results-output-container *,
+#search-results-output-container span,
+#search-results-output-container div {
+    text-overflow: clip !important;
+    text-overflow: unset !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+}
+
+.results-item-title {
+    font-weight: bold;
+    color: var(--accent-primary, #00ffcc);
+}
+
+.results-item-details {
+    font-size: 0.85rem;
+    color: var(--text-muted, #888890);
+}
+
+.load-profile-btn {
+    white-space: nowrap !important;
+    padding: 6px 12px;
+}
+
+@media (max-width: 768px) {
+    .results-row-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .load-profile-btn {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
+.custom-checkbox-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-menu-panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--panel-bg, #111114);
+    border: 1px solid var(--border-dim, #222226);
+    border-radius: 4px;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.dropdown-menu-panel.active {
+    display: block;
+}
+
+/* Enforce no ellipsis and force complete word wraps for responsive tables/lists */
+#search-results-output-container *, 
+#search-results-output-container span, 
+#search-results-output-container div {
+    text-overflow: clip !important;
+    text-overflow: unset !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+}
+
+@media (max-width: 768px) {
+    #search-results-output-container div[style*="flex-direction: row"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    #search-results-output-container button {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
+/* Dropdown Layout & Container Alignment */
+.custom-checkbox-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+}
+
+.dropdown-toggle-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 14px;
+    background-color: var(--bg-surface, #1e1e24);
+    border: 1px solid var(--border-dim, #33333b);
+    border-radius: 6px;
+    color: var(--text-main, #ffffff);
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.dropdown-toggle-btn:hover {
+    border-color: var(--accent-color, #5555ff);
+}
+
+.dropdown-caret {
+    font-size: 10px;
+    color: var(--text-muted, #888892);
+    margin-left: 8px;
+}
+
+.dropdown-menu-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 4px;
+    background-color: var(--bg-dropdown, #16161a);
+    border: 1px solid var(--border-dim, #222226);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+/* Reset Option Rules */
+.dropdown-reset-container {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-dim, #222226);
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main, #ffffff);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.checkbox-option input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.option-bold {
+    font-weight: bold;
+}
+
+/* Search Visual Match Modifiers */
+.node-dimmed-state {
+    opacity: 0.25;
+    pointer-events: none;
+    filter: grayscale(80%);
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.match-box-green {
+    display: inline-block;
+    padding: 4px 8px;
+    margin: 4px 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: #00ff66;
+    background-color: rgba(0, 255, 102, 0.1);
+    border: 1px solid #00ff66;
+    border-radius: 4px;
+    text-transform: capitalize;
+}
+
+/* --- DYNAMIC RANKED LIST VISUAL STATES --- */
+.active-search-list-view {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 800px !important; /* Prevents stretching too wide on desktop viewports */
+    margin: 0 auto !important;
+}
+
+/* Forces element cards out of their standard staggered table rows into a straight vertical column line */
+.active-search-list-view .element-node-box {
+    grid-row: auto !important;
+    grid-column: 1 / -1 !important; 
+    width: 100% !important;
+    height: auto !important;
+    min-height: 70px !important; /* Provides stable vertical room for non-truncating text blocks */
+    display: flex !important;
+    flex-direction: row !important; /* Horizontal inline structure for search list elements */
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 12px 20px !important;
+}
+
+/* --- CHECKBOX CONTAINER ALIGNMENT CORRECTION --- */
+.dropdown-menu-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+}
+
+.checkbox-option {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    padding: 8px 16px !important;
+    cursor: pointer;
+    text-align: left;
+    justify-content: flex-start; /* Aligns all text boxes to the left edge */
+}
+
+/* --- CLIPPED ELEMENT NAME TEXT & HOVER CONTROLLER --- */
+.name-string-display {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    display: block !important;
+    transition: all 0.15s ease-in-out;
+}
+
+/* Expand text fully into a single line layer on hover overlay */
+.element-node-box:hover .name-string-display {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    background: var(--bg-card-hover, #374151);
+    position: relative;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   MATRIX GRID SQUEEZE & COMPACT HOVER TRANSLATIONS
+   ========================================================================== */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 310px; /* Reduced layout room allocated to the sidebar panel */
+    gap: 20px;
+    align-items: start;
+    max-width: 100%;
+}
+
+.scrollable-matrix-viewport {
+    width: 100%;
+    max-width: 100%;
+}
+
+.periodic-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(42px, 1fr)); /* Slightly narrowed node min-bounds */
+    grid-template-rows: repeat(10, minmax(48px, 1fr));
+    gap: 4px; /* Reduced layout padding footprint */
+}
+
+/* Enforce strict content clamping inside shrunk nodes */
+.element-node-box .name-string-display {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-align: center;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+.element-node-box:hover .name-string-display {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    background: var(--bg-card-hover, #374151);
+    position: relative;
+    z-index: 10;
+}
+
+.element-node-box .name-string-display {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-align: center;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* --- CHECKBOX AND VARIABLES ALIGNMENT FIX --- */
+.dropdown-options-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Forces text labels and input squares to align straight against the left edge */
+.checkbox-option {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Locks all content cleanly to the left edge */
+    gap: 10px !important; /* Unified crisp spacing gap between variables and checkboxes */
+    width: 100% !important;
+    padding: 8px 16px !important;
+    color: var(--text-main, #f9fafb);
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Enforces rigid, aligned size limits on inputs inside the dropdown row */
+.checkbox-option input[type="checkbox"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0 !important; /* Prevents checkbox squares from stretching out of line */
+    cursor: pointer;
+    accent-color: #06b6d4;
+}
+
+.checkbox-option:hover {
+    background-color: var(--bg-card-hover, #374151);
+}
+
+
+
+
+/* ==========================================================================
+   FINAL STRUCTURAL ENVIRONMENTAL LAYOUT OVERRIDES
+   ========================================================================== */
+
+/* 1. Allows the table panel container to expand cleanly now that inspector is shifted below */
+.dashboard-layout {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. GRID GAP ENLARGEMENT FIX (Ensures cell names never overlap on hover across all nodes) */
+.periodic-matrix-grid {
+    display: grid !important;
+    grid-template-columns: repeat(18, minmax(46px, 1fr)) !important; 
+    grid-template-rows: repeat(10, minmax(50px, 1fr)) !important;
+    gap: 10px !important; /* Large crisp air gaps separating cell bounds permanently */
+    width: 100% !important;
+}
+
+/* 3. Text Name Presentation adjustments within nodes */
+.element-node-box {
+    position: relative !important;
+    padding: 4px !important;
+}
+
+.element-node-box .name-string-display {
+    font-size: 0.6rem !important;
+    color: #9ca3af !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    display: block !important;
+    transition: transform 0.1s ease, color 0.1s ease !important;
+}
+
+/* Scales item text up safely within its own spacious 10px layout gap bounds */
+.element-node-box:hover .name-string-display {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    color: #ffffff !important;
+    transform: scale(1.08) !important;
+    z-index: 10 !important;
+}
+
+/* 4. Drops dropdown filter menu lists closed by default to fix hanging defects */
+.dropdown-menu-panel {
+    display: none !important; 
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-height: 240px !important;
+    overflow-y: auto !important;
+    background-color: #111827 !important;
+    border: 1px solid #1f2937 !important;
+    border-radius: 6px !important;
+    margin-top: 4px !important;
+    z-index: 1000 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+    box-sizing: border-box !important;
+}
+
+/* Trigger opening display flex rule via script active state wrapper hook classes */
+.custom-checkbox-dropdown.is-open .dropdown-menu-panel {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* 5. Clean layout left-alignment for dropdown variables options and checkboxes */
+.dropdown-options-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+.checkbox-option {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Holds text flat to the left edge */
+    gap: 10px !important; 
+    width: 100% !important;
+    padding: 8px 16px !important;
+    color: #f9fafb !important;
+    font-size: 0.82rem !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+}
+
+.checkbox-option input[type="checkbox"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 13px !important;
+    height: 13px !important;
+    flex-shrink: 0 !important; /* Blocks unexpected shape squishing */
+    cursor: pointer !important;
+    accent-color: #06b6d4 !important;
+}
+
+.checkbox-option:hover {
+    background-color: #374151 !important;
+}
+
+/* 6. Dynamic table downscaling framework avoiding horizontal page scrolling entirely */
+@media screen and (max-width: 1480px) {
+    .periodic-matrix-grid:not(.active-search-list-view) {
+        transform-origin: top left !important;
+        transform: scale(0.80) !important; 
+        min-width: 960px !important; 
+    }
+    .scrollable-matrix-viewport {
+        overflow-x: auto !important;
+        width: 100% !important;
+        padding-bottom: 12px !important;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .periodic-matrix-grid:not(.active-search-list-view) {
+        transform: scale(0.68) !important;
+        min-width: 940px !important;
+    }
+}
