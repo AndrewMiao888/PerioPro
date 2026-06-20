@@ -1677,3 +1677,88 @@ input:focus, select:focus {
         min-width: 940px !important;
     }
 }
+
+
+
+
+/* ==========================================================================
+   FORCE HIGH-PRIORITY LIGHT BLUE BACKGROUND OVERRIDES (STYLES.CSS ONLY)
+   ========================================================================== */
+:root {
+    --bg-main: #ADD8E6 !important;
+    --bg-panel: rgba(173, 216, 230, 0.8) !important;
+    --bg-card: rgba(173, 216, 230, 0.6) !important;
+    --bg-card-hover: rgba(150, 200, 220, 0.9) !important;
+    --text-main: #0f172a !important; 
+    --text-muted: #334155 !important;
+}
+
+/* Overrides deep dark colors throughout tailwind and custom wrapper panels */
+body, html, main, .dashboard-layout, header, 
+.panel, .sidebar-panel-container, .arena-bottom-panel, 
+#inspector-data-panel-view {
+    background-color: #ADD8E6 !important;
+    background: #ADD8E6 !important;
+    color: #0f172a !important;
+    border-color: rgba(15, 23, 42, 0.15) !important;
+}
+
+/* Frosted visual overlay design layout adjustments for containers */
+.panel, .arena-bottom-panel, #inspector-data-panel-view {
+    background: rgba(255, 255, 255, 0.4) !important;
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    color: #0f172a !important;
+}
+
+/* Allows full width table layout now that the deep inspector is underneath */
+.dashboard-layout {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.periodic-matrix-grid {
+    display: grid !important;
+    grid-template-columns: repeat(18, minmax(46px, 1fr)) !important; 
+    grid-template-rows: repeat(10, minmax(50px, 1fr)) !important;
+    gap: 10px !important; 
+    width: 100% !important;
+}
+
+/* DROPDOWN OPTIONS SYSTEM VECTOR LEFT-ALIGNMENT OVERRIDES */
+.dropdown-options-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    background-color: #ffffff !important;
+}
+
+.checkbox-option {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important; /* Locks text straight to the left */
+    gap: 10px !important; 
+    width: 100% !important;
+    padding: 8px 16px !important;
+    color: #0f172a !important;
+    font-size: 0.82rem !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+}
+
+.checkbox-option input[type="checkbox"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 13px !important;
+    height: 13px !important;
+    flex-shrink: 0 !important; /* Keeps checkbox checkboxes from stretching out of shape */
+    cursor: pointer !important;
+    accent-color: #0891b2 !important;
+}
+
+.checkbox-option:hover {
+    background-color: rgba(150, 200, 220, 0.4) !important;
+}

@@ -166,6 +166,147 @@
         padding-bottom: 12px !important;
     }
 }
+
+
+
+
+
+/* ==========================================================================
+   FORCE HIGH-PRIORITY LIGHT BLUE BACKGROUND OVERRIDES (INDEX.HTML ONLY)
+   ========================================================================== */
+:root {
+    --bg-main: #ADD8E6 !important;
+    --bg-panel: rgba(173, 216, 230, 0.8) !important;
+    --bg-card: rgba(173, 216, 230, 0.6) !important;
+    --bg-card-hover: rgba(150, 200, 220, 0.9) !important;
+    --text-main: #0f172a !important; /* Forces dark text readable on light blue background */
+    --text-muted: #334155 !important;
+}
+
+body, html, main, .dashboard-layout {
+    background-color: #ADD8E6 !important;
+    background: #ADD8E6 !important;
+    color: #0f172a !important;
+}
+
+/* Force all grid element box containers to remain clean & visible on light blue */
+.element-node-box {
+    background-color: rgba(255, 255, 255, 0.45) !important;
+    border: 1px solid rgba(15, 23, 42, 0.15) !important;
+    transition: opacity 0.2s ease, transform 0.1s ease !important;
+    position: relative !important;
+}
+
+/* LARGE GRID CELL GAP ADJUSTMENTS (Forces names never to overlap on hover) */
+.periodic-matrix-grid {
+    display: grid !important;
+    grid-template-columns: repeat(18, minmax(46px, 1fr)) !important; 
+    grid-template-rows: repeat(10, minmax(50px, 1fr)) !important;
+    gap: 10px !important; /* Wide gaps across all elements */
+    width: 100% !important;
+}
+
+.element-node-box .name-string-display {
+    font-size: 0.6rem !important;
+    color: #334155 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+.element-node-box:hover .name-string-display {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    color: #0f172a !important;
+    transform: scale(1.06) !important;
+    z-index: 20 !important;
+}
+
+/* HORIZONTAL SEARCH CONTROLS ALIGNMENT LAYER */
+.search-controls-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: flex-end !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 600px !important; 
+    margin-bottom: 24px !important;
+    box-sizing: border-box !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border: 1px solid rgba(15, 23, 42, 0.15) !important;
+}
+
+.search-bar-input-column,
+.search-dropdown-select-column {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 280px !important;
+    position: relative !important;
+}
+
+.search-control-label {
+    font-size: 0.75rem !important;
+    color: #334155 !important;
+    margin-bottom: 6px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.search-controls-wrapper input[type="text"] {
+    width: 100% !important;
+    padding: 10px 14px !important;
+    background-color: #ffffff !important;
+    border: 1px solid rgba(15, 23, 42, 0.2) !important;
+    color: #0f172a !important;
+    border-radius: 6px !important;
+}
+
+/* CLOSED DROPDOWN MECHANICAL SYSTEM FIXED OVERRIDE */
+.custom-checkbox-dropdown {
+    position: relative !important;
+    width: 100% !important;
+}
+
+.dropdown-menu-panel {
+    display: none !important; /* Shuts dropdown menu tight by default */
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-height: 250px !important;
+    overflow-y: auto !important;
+    background-color: #ffffff !important;
+    border: 1px solid rgba(15, 23, 42, 0.2) !important;
+    border-radius: 6px !important;
+    margin-top: 4px !important;
+    z-index: 1000 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+.custom-checkbox-dropdown.is-open .dropdown-menu-panel {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* RESPONSIVE FLUID DOWN-SCALING OVERRIDES */
+@media screen and (max-width: 1480px) {
+    .periodic-matrix-grid:not(.active-search-list-view) {
+        transform-origin: top left !important;
+        transform: scale(0.80) !important; 
+        min-width: 960px !important; 
+    }
+    .scrollable-matrix-viewport {
+        overflow-x: auto !important;
+        width: 100% !important;
+        padding-bottom: 12px !important;
+    }
+}
 </style>
 
     <script src="data.js"></script>
