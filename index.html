@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perio Pro | Advanced Chemical Analytical Engine</title>
+   <link rel="stylesheet" href="styles.css">
+   <script src="https://cdn.tailwindcss.com"></script>
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151f32',
+                            900: '#0f172a',
+                            950: '#070a13',
+                        }
+                    },
+                    boxShadow: {
+                        'neon-blue': '0 0 25px rgba(59, 130, 246, 0.3)',
+                        'neon-purple': '0 0 25px rgba(139, 92, 246, 0.3)',
+                        'glass': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+/* --- TRANSITIONS & INTERACTIVE SEARCH MATCH HIGHLIGHTS --- */
+.element-node-box {
+    transition: opacity 0.2s ease, transform 0.1s ease !important;
+    position: relative !important;
+}
+
+.node-dimmed-state {
+    display: none !important;
+}
+
+.search-match-secondary {
+    opacity: 0.85 !important;
+    border: 1px dashed #555 !important;
+}
+
+.search-match-primary {
+    opacity: 1 !important;
+    border: 2px solid #ffffff !important;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+/* --- LARGE MATRIX CELL GAP ADJUSTMENTS (PREVENTS ALL CELL OVERLAPS ON HOVER) --- */
+.periodic-matrix-grid {
+    display: grid !important;
+    grid-template-columns: repeat(18, minmax(46px, 1fr)) !important; 
+    grid-template-rows: repeat(10, minmax(50px, 1fr)) !important;
+    gap: 10px !important; /* Wide structural grid separation across all cells */
+    width: 100% !important;
+}
+
+.element-node-box .name-string-display {
+    font-size: 0.6rem !important;
+    color: #9ca3af !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Safe text scale expansion directly within its own roomy layout gap zone */
+.element-node-box:hover .name-string-display {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    color: #ffffff !important;
+    transform: scale(1.06) !important;
+    z-index: 20 !important;
+}
+
+/* --- HORIZONTAL CONTROLS (SIDE-BY-SIDE LEFT ALIGNED) --- */
+.search-controls-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: flex-end !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 600px !important; 
+    margin-bottom: 24px !important;
+    box-sizing: border-box !important;
+}
+
+.search-bar-input-column,
+.search-dropdown-select-column {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 280px !important;
+    position: relative !important;
+}
+
+.search-control-label {
+    font-size: 0.75rem !important;
+    color: #9ca3af !important;
+    margin-bottom: 6px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.search-controls-wrapper input[type="text"] {
+    width: 100% !important;
+    padding: 10px 14px !important;
+    background-color: #1f2937 !important;
+    border: 1px solid #374151 !important;
+    color: #f9fafb !important;
+    border-radius: 6px !important;
+    outline: none !important;
+    font-size: 0.85rem !important;
+}
+
+/* --- THE DROP-DOWN COLLAPSED ARCHITECTURE MECHANICS --- */
+.custom-checkbox-dropdown {
+    position: relative !important;
+    width: 100% !important;
+}
+
+/* Enforces hidden behavior state by default to prevent hanging lists */
+.dropdown-menu-panel {
+    display: none !important; 
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-height: 250px !important;
+    overflow-y: auto !important;
+    background-color: #111827 !important;
+    border: 1px solid #1f2937 !important;
+    border-radius: 6px !important;
+    margin-top: 4px !important;
+    z-index: 1000 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+    box-sizing: border-box !important;
+}
+
+/* Displays content options cleanly whenever script sets container to open */
+.custom-checkbox-dropdown.is-open .dropdown-menu-panel {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* --- AUTO-SCALE PREVENTING DESKTOP SIDESCROLL BLOWOUT --- */
+@media screen and (max-width: 1480px) {
+    .periodic-matrix-grid:not(.active-search-list-view) {
+        transform-origin: top left !important;
+        transform: scale(0.80) !important; 
+        min-width: 960px !important; 
+    }
+    .scrollable-matrix-viewport {
+        overflow-x: auto !important;
+        width: 100% !important;
+        padding-bottom: 12px !important;
+    }
+}
+</style>
+
+    <script src="data.js"></script>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col antialiased bg-slate-950">
+
+    <header>
+        <div>
+            <h1>PERIO<span>PRO</span></h1>
+            <p>Advanced Chemical Engine Dashboard & Deep Property Analysis Grid</p>
+        </div>
+        <div class="stats-badge" id="engine-status-badge">Verifying data stream array connection...</div>
+    </header>
+
+    <!-- Glowing Background Accents -->
+    <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none -z-50"></div>
+    <div class="fixed bottom-0 right-1/4 w-[700px] h-[700px] bg-purple-600/10 rounded-full blur-[160px] pointer-events-none -z-50"></div>
+
+
+
+    <!-- Main Layout Grid -->
+    <div class="max-w-7xl w-full mx-auto px-4 py-8 flex-grow flex flex-col lg:flex-row gap-8 relative">
+        
+        <!-- Left Column: Permanent Sticky Navigation & Skips (Moved to Left Side) -->
+        <aside class="lg:w-1/4 shrink-0 lg:sticky lg:top-24 h-fit max-h-[85vh] flex flex-col gap-6">
+            
+            <!-- Quick Navigation Panel -->
+            <div class="bg-slate-900/85 backdrop-blur-md border border-slate-800/80 p-5 rounded-2xl shadow-xl flex flex-col gap-4 shadow-neon-blue/5">
+                <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Navigation Hub</h4>
+                    <span id="progressPercentage" class="text-xs font-mono text-blue-400 font-bold">0% Read</span>
+                </div>
+                
+                <nav class="space-y-1.5 text-xs max-h-[50vh] overflow-y-auto pr-1" id="sticky-toc">
+                    <a href="#ch-1" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        1. Cosmic Origins & BBN
+                    </a>
+                    <a href="#ch-2" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        2. Stellar Fusion Phases
+                    </a>
+                    <a href="#ch-3" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        3. Heavy Nucleosynthesis
+                    </a>
+                    <a href="#ch-4" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        4. Elemental Distributions
+                    </a>
+                    <a href="#ch-5" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        5. Empirical Origins & Triads
+                    </a>
+                    <a href="#ch-6" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        6. The Mendeleev Era
+                    </a>
+                    <a href="#ch-7" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        7. Moseley's Law & Spectra
+                    </a>
+                    <a href="#ch-8" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        8. Wave-Particle Symmetries
+                    </a>
+                    <a href="#ch-9" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        9. Hydrogen Schrödinger Space
+                    </a>
+                    <a href="#ch-10" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        10. Multi-Electron Hartree-Fock
+                    </a>
+                    <a href="#ch-11" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        11. The Quantum Number Map
+                    </a>
+                    <a href="#ch-12" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        12. Aufbau & Pauli Constraints
+                    </a>
+                    <a href="#ch-13" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        13. Slater-Shielding Mechanics
+                    </a>
+                    <a href="#ch-14" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        14. Atomic & Ionic Sizes
+                    </a>
+                    <a href="#ch-15" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        15. Ionization & Affinity Wells
+                    </a>
+                    <a href="#ch-16" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        16. Electronegativity Models
+                    </a>
+                    <a href="#ch-17" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        17. Block Families & Trends
+                    </a>
+                    <a href="#ch-18" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        18. Crystal Field Splitting
+                    </a>
+                    <a href="#ch-19" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        19. Relativistic Contractions
+                    </a>
+                    <a href="#ch-20" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        20. Superheavy Frontiers
+                    </a>
+                    <a href="#play-1" class="toc-link block text-slate-400 hover:text-white hover:bg-slate-800/40 px-3 py-1.5 rounded-lg border-l-2 border-transparent transition-all">
+                        21. Perio Playgound
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Interactive Relative Skipping System -->
+            <div class="bg-slate-900/85 backdrop-blur-md border border-slate-800/80 p-5 rounded-2xl shadow-xl flex flex-col gap-3 shadow-neon-purple/5">
+                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest pb-2 border-b border-slate-800">Skips & Directions</h4>
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="skipToPrevious()" class="flex flex-col items-center justify-center p-3 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 hover:border-blue-500/50 transition-all group active:scale-95">
+                        <svg class="w-4 h-4 text-slate-400 group-hover:text-blue-400 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        <span class="text-[10px] text-slate-500 group-hover:text-slate-300 font-bold uppercase tracking-wider mt-1">Previous</span>
+                    </button>
+                    <button onclick="skipToNext()" class="flex flex-col items-center justify-center p-3 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 hover:border-blue-500/50 transition-all group active:scale-95">
+                        <svg class="w-4 h-4 text-slate-400 group-hover:text-blue-400 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        <span class="text-[10px] text-slate-500 group-hover:text-slate-300 font-bold uppercase tracking-wider mt-1">Next Part</span>
+                    </button>
+                </div>
+                <button onclick="scrollToTop()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs uppercase tracking-wider hover:opacity-95 active:scale-[0.98] transition-all shadow-lg shadow-blue-500/20 border border-blue-400/20">
+                    ▲ Return to Top
+                </button>
+            </div>
+
+            <!-- Informational Sidebar Tooltip Box -->
+            <div class="bg-gradient-to-br from-blue-600/10 to-indigo-600/10 border border-blue-500/20 p-5 rounded-2xl">
+                <span class="text-[10px] text-blue-400 font-extrabold uppercase tracking-widest block mb-1">Quick Note</span>
+                <p class="text-[11px] text-slate-400 m-0 leading-relaxed text-left">
+                    Use standard scrolling or select sections above. The system automatically highlights sections based on active viewport intersection.
+                </p>
+            </div>
+
+        </aside>
+
+        <!-- Right Column: The Massive Monograph (Moved to Right Side) -->
+        <main class="lg:w-3/4 flex-grow space-y-8">
+            <div class="essay-container rounded-3xl p-6 md:p-12 shadow-2xl relative overflow-hidden border border-slate-800">
+                
+                <!-- Cosmic Header Panel -->
+                <div class="relative z-10 space-y-4 pb-8 border-b border-slate-800/85">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs text-blue-400 font-bold tracking-wide uppercase">
+                        ⭐ Cosmic Physics & Inorganic Chemistry
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-black tracking-tight leading-tight text-white bg-gradient-to-br from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
+                        The Structural, Quantum Mechanical, and Relativistic Foundations of Mendeleev's Periodic Law
+                    </h2>
+                    <p class="text-lg md:text-xl text-slate-400 font-medium leading-relaxed max-w-3xl">
+                        An exhaustive, university-grade theoretical treatise exploring historical genesis, atomic structures, wave equation solutions, nucleosynthesis, electrostatic trends, and relativistic electrodynamics.
+                    </p>
+                </div>
+
+                <!-- SECTION 1 -->
+                <section id="ch-1" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 1</span>
+                        <h3 class="text-2xl font-extrabold text-white">1. Cosmic Origins: Big Bang Nucleosynthesis & Primordial Elements</h3>
+                    </div>
+
+                    <p>
+                        The cosmic narrative of chemistry begins with the birth of the universe. In the immediate aftermath of the hot Big Bang, the cosmos existed as a highly energetic, nearly isotropic plasma of quarks, gluons, and leptons, which eventually cooled to allow the formation of stable hadrons. During an epoch known as Big Bang Nucleosynthesis (BBN), spanning roughly from 10 seconds to twenty minutes after the initial singularity, the universe expanded and cooled significantly. This rapid expansion dropped the ambient thermal energy down to scales where nuclear binding forces could overcome disruptive kinetic impacts, allowing protons and neutrons to permanently merge without being instantly dissociated by high-energy gamma-ray photons.
+                    </p>
+
+                    <p>
+                        Prior to the onset of nucleosynthesis, the universe was in a state of statistical thermal equilibrium governed by the weak interaction. Protons and neutrons were continuously interconverted through collisions with electrons, positrons, and neutrinos. This equilibrium was maintained via the following fundamental weak processes:
+                    </p>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\text{n} + \nu_\text{e} \longleftrightarrow \text{p} + \text{e}^-$$
+                    </div>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\text{n} + \text{e}^+ \longleftrightarrow \text{p} + \bar{\nu}_\text{e}$$
+                    </div>
+
+                    <p>
+                        As long as the rate of these weak interactions exceeded the Hubble expansion rate of the universe, the relative abundance of neutrons to protons was strictly determined by the Maxwell-Boltzmann distribution. Because neutrons are slightly more massive than protons—with a mass difference of approximately $\Delta m = 1.293\text{ MeV}$—the neutron-to-proton ratio decreased monotonically as the ambient temperature ($T$) dropped, tracking the thermodynamic expression:
+                    </p>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\frac{n}{p} = \exp\left(-\frac{\Delta m}{k_\text{B} T}\right)$$
+                    </div>
+
+                    <p>
+                        However, when the universe cooled to a critical threshold of approximately $T \approx 0.8\text{ MeV}$ (roughly $10^{10}\text{ Kelvin}$), the rate of these weak interconversions dropped below the expansion rate of space. At this point, the weak interactions "froze out," locking the primordial neutron-to-proton ratio at a value of roughly $1/6$. Following freeze-out, free neutrons could no longer efficiently convert into protons via scattering, leaving them subject only to standard beta decay:
+                    </p>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\text{n} \longrightarrow \text{p} + \text{e}^- + \bar{\nu}_\text{e} \quad (\tau_\text{n} \approx 879.4\text{ s})$$
+                    </div>
+
+                    <p>
+                        This radioactive decay further whittled the neutron-to-proton ratio down from $1/6$ to approximately $1/7$ by the time nuclear fusion actually commenced. This delay in the onset of fusion was caused by the "deuterium bottleneck." Although the binding energy of a deuterium nucleus is relatively low ($2.22\text{ MeV}$), the enormous photon-to-baryon ratio of the early universe meant that there was a vast reservoir of high-energy gamma-ray photons capable of immediately destroying newly formed deuterium nuclei. Fusion could not proceed in earnest until the universe cooled sufficiently ($T \approx 0.1\text{ MeV}$) to drastically reduce the number of photons residing in the high-energy tail of the Planck distribution.
+                    </p>
+
+                    <p>
+                        Once the deuterium bottleneck was broken, a rapid cascade of nuclear fusion reactions took place. Deuterium acted as the critical building block for heavier structures, leading to the synthesis of Helium-3 ($^3\text{He}$), Helium-4 ($^4\text{He}$), and trace amounts of Tritium ($^3\text{H}$) and Lithium-7 ($^7\text{Li}$). The underlying network of primary nuclear reactions occurred through the following key steps:
+                    </p>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\text{p} + \text{n} \longleftrightarrow {^2\text{H}} + \gamma \quad (Q = 2.22\text{ MeV})$$
+                    </div>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $${^2\text{H}} + {^2\text{H}} \longleftrightarrow {^3\text{He}} + \text{n}$$
+                    </div>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $${^2\text{H}} + {^2\text{H}} \longleftrightarrow {^3\text{H}} + \text{p}$$
+                    </div>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $${^3\text{H}} + {^2\text{H}} \longleftrightarrow {^4\text{He}} + \text{n}$$
+                    </div>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $${^3\text{He}} + {^2\text{H}} \longleftrightarrow {^4\text{He}} + \text{p}$$
+                    </div>
+
+                    <p>
+                        Because Helium-4 possesses an exceptionally high binding energy per nucleon ($\approx 7.07\text{ MeV}$), practically every single available neutron that survived the freeze-out epoch was rapidly swept up into the creation of $^4\text{He}$ nuclei. This structural efficiency allows for an elegant mathematical calculation of the primordial mass fraction of Helium, denoted as $Y_\text{p}$. Assuming all neutrons are bound into Helium-4 pairs, the mass fraction can be modeled cleanly as:
+                    </p>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$Y_\text{p} \equiv \frac{M_\text{He}}{M_\text{total}} \approx \frac{4 (n_\text{n} / 2)}{n_\text{p} + n_\text{n}} = \frac{2 (n/p)}{1 + (n/p)}$$
+                    </div>
+
+                    <p>
+                        Substituting the post-decay ratio of $n/p \approx 1/7$ into this expression yields $Y_\text{p} \approx 0.25$. This means that approximately 25% of the baryonic mass of the universe was converted into Helium-4 during these crucial first twenty minutes, leaving the remaining 75% as unbound protons, which constitute elementary Hydrogen ($^1\text{H}$).
+                    </p>
+
+                    <p>
+                        Following this intense period of assembly, primordial nucleosynthesis encountered absolute structural barriers. In the landscape of nuclear physics, there are no stable isotopes with mass numbers $A = 5$ or $A = 8$. Any tentative fusion between a proton and a Helium-4 nucleus yields Lithium-5, which instantly decays via proton emission. Similarly, the fusion of two Helium-4 nuclei produces Beryllium-8, which splits back into alpha particles with a half-life on the order of $10^{-16}$ seconds. 
+                    </p>
+                    
+                    <p>
+                        Because the universe was expanding and dropping in density at an exponential rate, it lacked the sustained high-density, high-temperature environment required to bypass these gaps via the triple-alpha process—a mechanism that requires a three-body collision to bridge the $A = 8$ gap and synthesize Carbon-12. Consequently, stellar-scale synthesis was impossible during BBN, leaving the early chemical inventory of the universe profoundly simple and pristine.
+                    </p>
+
+                    <p>
+                        The minor pathways that did manage to navigate past the mass gaps occurred primarily via the radiative capture of alpha particles by Helium-3 nuclei, generating Beryllium-7 ($^7\text{Be}$), which later captured an electron to decay into Lithium-7 ($^7\text{Li}$):
+                    </p>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $${^3\text{He}} + {^4\text{He}} \longleftrightarrow {^7\text{Be}} + \gamma$$
+                    </div>
+
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $${^7\text{Be}} + \text{e}^- \longrightarrow {^7\text{Li}} + \nu_\text{e}$$
+                    </div>
+
+                    <p>
+                        While theoretical calculations for Hydrogen and Helium abundances match observational data gathered from pristine, metal-poor gas clouds with spectacular accuracy, the primordial abundance of Lithium remains a compelling mystery. Observational spectroscopy of ancient halo stars reveals a noticeable deficit—roughly a factor of three lower than theoretical BBN predictions. This discrepancy is known in modern astrophysics as the "Primordial Lithium Problem." Current investigations look to resolve this puzzle through potential stellar depletion mechanisms, errors in nuclear cross-section measurements, or exotic physics beyond the Standard Model, such as decaying dark matter particles during the early evolutionary stages of the cosmos.
+                    </p>
+                </section>
+
+                <!-- SECTION 2 -->
+                <section id="ch-2" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 2</span>
+                        <h3 class="text-2xl font-extrabold text-white">2. Stellar Alchemy: Thermonuclear Fusion Shells & Core Evolution</h3>
+                    </div>
+                    <p>
+                        The creation of elements heavier than Lithium occurs inside stars through thermonuclear fusion. In these natural reactors, massive gravitational forces compress stellar cores to extreme pressures and temperatures, giving nuclei enough kinetic energy to overcome their mutual electrostatic repulsion (the Coulomb barrier).
+                    </p>
+                    <p>
+                        In main-sequence stars like our Sun, hydrogen fusion operates via the Proton-Proton Chain or the catalytic CNO (Carbon-Nitrogen-Oxygen) cycle, producing Helium. As massive stars age, they develop concentric, onion-like burning shells. Once hydrogen fuel is exhausted in the core, helium burning initiates via the Triple-Alpha Process:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$3\ {^4_2\text{He}} \longrightarrow {^{12}_6\text{C}} + \gamma \quad (Q = 7.275\text{ MeV})$$
+                    </div>
+                    <p>
+                        Following helium consumption, heavier shells sequentially ignite. These stages synthesize Carbon, Neon, Oxygen, Silicon, and Sulfur. Ultimately, this stellar synthesis builds a dense, inert core of Iron ($Z=26$). Since the nuclear binding energy per nucleon peaks near Iron-56, further fusion reactions become highly endothermic, causing the star to lose its thermal pressure support against gravity.
+                    </p>
+                    <p>
+                        This lack of outward thermal pressure triggers a catastrophic gravitational collapse. In stars more massive than about eight solar masses, the core collapses within a fraction of a second, producing a core-collapse supernova. This collapse forces protons and electrons together to form a neutron star or a black hole, while the outer layers of the star are ejected into space at high velocities.
+                    </p>
+                    <p>
+                        During the CNO cycle, the nitrogen-14 nucleus acts as a rate-limiting bottleneck. Because the radiative capture of a proton by Nitrogen-14 is exceptionally slow, stars running on the CNO cycle convert a significant portion of their core Carbon and Oxygen into Nitrogen-14. This catalytic cycle governs the chemical evolution of stellar populations over billions of years.
+                    </p>
+                </section>
+
+                <!-- SECTION 3 -->
+                <section id="ch-3" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 3</span>
+                        <h3 class="text-2xl font-extrabold text-white">3. Cataclysmic Forging: Supernovae, Neutron Star Mergers, and the $r$- & $s$-Processes</h3>
+                    </div>
+                    <p>
+                        The synthesis of elements heavier than Iron is an energy-consuming process that cannot be sustained by ordinary stellar fusion. These heavy elements require extremely high-energy astrophysical environments, such as core-collapse supernovae and binary neutron star collisions. In these cataclysmic events, existing nuclei undergo rapid neutron capture ($r$-process) or slow neutron capture ($s$-process).
+                    </p>
+                    <p>
+                        During the slow ($s$) process, which occurs in asymptotic giant branch stars over long timescales, neutrons are captured one by one. If a newly formed isotope is unstable, it typically has time to beta-decay into a stable element before capturing another neutron. In contrast, the rapid ($r$) process occurs in extremely high neutron fluxes, such as those generated during neutron star mergers. Nuclei are bombarded with neutrons so rapidly that they do not have time to decay, building up highly unstable, neutron-rich isotopes:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $${^1_0\text{n}} + {^A_Z\text{X}} \longrightarrow {^{A+1}_{\phantom{A+1}Z}\text{X}} \xrightarrow[\tau_{1/2}]{\beta^-} {^{A+1}_{Z+1}\text{Y}} + \text{e}^- + \bar{\nu}_\text{e}$$
+                    </div>
+                    <p>
+                        Once the neutron flux subsides, these unstable isotopes undergo a cascade of beta-minus ($\beta^-$) decays, increasing their atomic number to form stable heavy elements like Gold ($Z=79$), Platinum ($Z=78$), and Uranium ($Z=92$).
+                    </p>
+                    <p>
+                        The distinction between these two processes is clearly visible in the isotopic abundance patterns of solar system matter. The slow process is responsible for producing elements up to Bismuth ($Z=83$) along a narrow valley of beta-stability, whereas the rapid process is the exclusive pathway to the synthesis of actinides, such as Thorium and Uranium.
+                    </p>
+                    <p>
+                        Recent observations of gravitational wave events, such as GW170817, paired with optical follow-up, have confirmed that binary neutron star mergers are the primary cosmic factories for $r$-process elements. These observations show that these events synthesize immense quantities of heavy elements, enriching galaxies and providing the materials for new star-and-planet systems.
+                    </p>
+                </section>
+
+                <!-- SECTION 4 -->
+                <section id="ch-4" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 4</span>
+                        <h3 class="text-2xl font-extrabold text-white">4. Cosmic Abundance Scales: The Harkins Rule & Solar System Chemistry</h3>
+                    </div>
+                    <p>
+                        The chemical profile of our solar system is a direct reflection of these astrophysical processes. When we plot the abundance of elements against their atomic number ($Z$), we observe a clear periodic pattern. This cosmic distribution is characterized by the Harkins Rule (or the Odd-Even Rule), which states that elements with even atomic numbers are generally more abundant in the universe than their odd-numbered neighbors.
+                    </p>
+                    <p>
+                        This rule arises from the fundamental quantum mechanics of the nucleus. Nuclei with even numbers of protons and neutrons have paired nucleon configurations, resulting in higher binding energies and greater stability. For example, Carbon ($Z=6$) and Oxygen ($Z=8$) are significantly more abundant than Nitrogen ($Z=7$) and Fluorine ($Z=9$). This nucleosynthesis fingerprint is preserved in the composition of planetary crusts and stellar atmospheres.
+                    </p>
+                    <p>
+                        This abundance pattern exhibits a prominent peak at Iron ($Z=26$), representing the endpoint of core stellar fusion. From there, the abundance curve drops by several orders of magnitude for heavier elements, reflecting the rare and extreme energetic events required for their synthesis.
+                    </p>
+                    <p>
+                        This uneven distribution of elements has profound chemical and geochemical consequences. On Earth, even-numbered elements like Oxygen, Magnesium, Silicon, and Iron make up over 90% of the planet's mass. This abundant mineral inventory forms the rocky mantle and core of our planet, while odd-numbered elements are often restricted to trace roles in mineral systems.
+                    </p>
+                </section>
+
+                <!-- SECTION 5 -->
+                <section id="ch-5" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 5</span>
+                        <h3 class="text-2xl font-extrabold text-white">5. Historical Foundations: From Alchemy and Lavoisier to Döbereiner's Triads</h3>
+                    </div>
+                    <p>
+                        Before the discovery of quantum mechanics, chemical classification was entirely empirical. The transition from alchemy to modern chemistry was accelerated by Antoine Lavoisier's 1789 publication, <em>Elementary Treatise on Chemistry</em>, which defined an element as a substance that could not be broken down into simpler parts. Lavoisier grouped his list of elements into gases, non-metals, metals, and earths.
+                    </p>
+                    <p>
+                        As the number of known elements grew, chemists searched for deeper organizing principles. In 1829, Johann Wolfgang Döbereiner proposed his <em>Law of Triads</em>. He noted that certain elements with similar chemical properties could be grouped in sets of three, where the atomic weight of the middle element was roughly the average of the other two:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$M_{\text{Sr}} \approx \frac{M_{\text{Ca}} + M_{\text{Ba}}}{2} = \frac{40.08 + 137.33}{2} = 88.71 \quad (\text{Actual } M_{\text{Sr}} = 87.62)$$
+                    </div>
+                    <p>
+                        Although limited to a few elements, Döbereiner's triads showed that chemical properties were mathematically correlated with atomic mass, setting the stage for more comprehensive periodic systems.
+                    </p>
+                    <p>
+                        Döbereiner’s triads included groups such as Chlorine-Bromine-Iodine and Sulfur-Selenium-Tellurium. These groupings were the first hints of periodic columns. However, because his system was based solely on groups of three, it could not organize the transition metals or explain why elements displayed these periodic intervals.
+                    </p>
+                    <p>
+                        Despite these limitations, this empirical grouping sparked intense interest in chemical systematics. Over the following decades, as atomic weights were measured with greater precision at the Karlsruhe Congress of 1860, chemists gained the clean quantitative data required to build a unified periodic system.
+                    </p>
+                </section>
+
+                <!-- SECTION 6 -->
+                <section id="ch-6" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 6</span>
+                        <h3 class="text-2xl font-extrabold text-white">6. Periodicity Emerges: Newlands, Meyer, and Mendeleev's Empirical Breakthrough</h3>
+                    </div>
+                    <p>
+                        In the 1860s, several chemists independently developed periodic tables. In 1865, John Newlands formulated the <em>Law of Octaves</em>. By arranging the elements by increasing atomic mass, Newlands noted that similar chemical and physical properties recurred every eighth element.
+                    </p>
+                    <p>
+                        The true breakthrough occurred in 1869, when Dmitri Mendeleev and Julius Lothar Meyer published independent tabular layouts sorting elements by atomic weight. Mendeleev's genius was prioritizing chemical properties over strict weight sequences. When a mass sequence placed an element in an inappropriate family, he shifted its position or left empty gaps. This allowed him to successfully predict the properties of undiscovered elements like Gallium ("Eka-aluminum") and Germanium ("Eka-silicon") with remarkable accuracy.
+                    </p>
+                    <p>
+                        Mendeleev's table was not without its critics. Many contemporary chemists found his empty gaps speculative, and his mass-inversion choices arbitrary. However, the subsequent discoveries of Gallium (1875), Scandium (1879), and Germanium (1886)—matching his predicted properties with incredible precision—silenced the skeptics and established the periodic table as an indispensable tool.
+                    </p>
+                    <p>
+                        While Meyer focused primarily on periodic physical trends, such as atomic volume, Mendeleev developed a comprehensive system that organized almost all known elements. His empirical insights successfully bridged the gap between basic chemical observation and the mathematical atomic models of the twentieth century.
+                    </p>
+                </section>
+
+                <!-- SECTION 7 -->
+                <section id="ch-7" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 7</span>
+                        <h3 class="text-2xl font-extrabold text-white">7. The Spectral Revolution: Moseley's Law and the Mathematical Atomic Number</h3>
+                    </div>
+                    <p>
+                        Mendeleev's mass-ordered system, however, possessed lingering anomalies, such as the "argon-potassium" swap, where argon (atomic weight $39.95$) had to be placed before potassium (atomic weight $39.10$) to preserve chemical grouping rules. These anomalies were permanently resolved in 1913 by Henry Moseley.
+                    </p>
+                    <p>
+                        By analyzing the high-frequency X-ray spectra emitted by elemental targets bombarded by cathode rays, Moseley discovered a direct, linear relationship between the square root of the emitted X-ray frequency ($\nu$) and an element's atomic number ($Z$):
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\sqrt{\nu} = a(Z - b)$$
+                    </div>
+                    <p>
+                        Where $a$ and $b$ are structural constants. Moseley proved that the defining metric of an element is its nuclear charge (Atomic Number, $Z$), representing the exact count of protons in its nucleus. Sorting by atomic number resolved all of Mendeleev's mass inversions, placing Argon ($Z=18$) correctly ahead of Potassium ($Z=19$). This established the modern Periodic Law: the physical and chemical properties of elements fluctuate as periodic responses to their absolute atomic number.
+                    </p>
+                    <p>
+                        Moseley’s discovery was cut short by his tragic death at the Battle of Gallipoli in 1915, an event that led the British government to ban prominent scientists from serving in active combat roles. Despite his brief career, Moseley's contribution permanently transformed the periodic table from an empirical directory into a mathematically verified map of nuclear charge.
+                    </p>
+                    <p>
+                        This spectral breakthrough also allowed researchers to determine exactly how many elements remained undiscovered between Hydrogen ($Z=1$) and Uranium ($Z=92$). It eliminated the search for fictitious elements, providing a mathematically bounded framework for identifying the fundamental components of our universe.
+                    </p>
+                </section>
+
+                <!-- SECTION 8 -->
+                <section id="ch-8" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 8</span>
+                        <h3 class="text-2xl font-extrabold text-white">8. The Wave Mechanics of Matter: De Broglie, Heisenberg, and the Schrödinger Model</h3>
+                    </div>
+                    <p>
+                        The physical explanation of Mendeleev's empirical periodic law required a revolution in quantum mechanics. In 1924, Louis de Broglie proposed that particles like electrons possess wave-particle duality, with a wavelength ($\lambda$) inversely proportional to their momentum ($p$):
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\lambda = \frac{h}{p}$$
+                    </div>
+                    <p>
+                        This was followed by Werner Heisenberg's Uncertainty Principle, which stated that the position ($x$) and momentum ($p$) of an electron cannot be simultaneously measured with absolute precision. This prompted Erwin Schrödinger in 1926 to model the electron not as a localized planet orbiting the nucleus, but as a three-dimensional standing wave, leading to the formulation of wave mechanics.
+                    </p>
+                    <p>
+                        This wave-based approach replaced deterministic Bohr orbits with three-dimensional probability distributions called orbitals. By treating the electron as a wave, physicists could explain why it did not collapse into the positively charged nucleus—a major failure of classical electrodynamics.
+                    </p>
+                    <p>
+                        These quantum mechanics form the foundation of modern structural chemistry. By solving the wave equation, we can understand how electron wavefunctions overlap to form chemical bonds, explaining how microscopic atomic shapes dictate macroscopic mineral properties.
+                    </p>
+                </section>
+
+                <!-- SECTION 9 -->
+                <section id="ch-9" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 9</span>
+                        <h3 class="text-2xl font-extrabold text-white">9. Hydrogenic Schrödinger Solutions: Radial & Angular Symmetries</h3>
+                    </div>
+                    <p>
+                        By solving the Schrödinger wave equation for the hydrogenic (single-electron) system, we can map out the spatial distribution of electrons. The equation is expressed as:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\left[ -\frac{1}{2}\nabla^2 - \frac{Z}{r} \right]\psi(r, \theta, \phi) = E\psi(r, \theta, \phi)$$
+                    </div>
+                    <p>
+                        In spherical coordinates ($r, \theta, \phi$), the wave function $\psi$ is separated into radial and angular components:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\psi_{n, l, m_l}(r, \theta, \phi) = R_{n, l}(r) Y_{l, m_l}(\theta, \phi)$$
+                    </div>
+                    <p>
+                        The radial wavefunction $R_{n, l}(r)$ governs the distance of the electron from the nucleus, while the spherical harmonics $Y_{l, m_l}(\theta, \phi)$ govern the angular shape and spatial symmetry of the orbital. This separation explains why orbitals have distinct geometries: spherical for $s$-subshells, dumbbell-shaped for $p$-subshells, and multi-lobed for $d$- and $f$-subshells.
+                    </p>
+                    <p>
+                        The angular part of the wavefunction is defined by Legendre polynomials, which contain angular nodes where the probability of finding an electron is exactly zero. The orientation of these nodes in space explains why $p$-orbitals are aligned along the Cartesian axes ($p_x, p_y, p_z$), and why $d$-orbitals point in specific directions that govern coordational bonding.
+                    </p>
+                    <p>
+                        These hydrogenic wavefunctions serve as the baseline model for describing electron density. Even in multi-electron atoms, where electron repulsions alter energy levels, the core geometric symmetries of these orbitals remain preserved.
+                    </p>
+                </section>
+
+                <!-- SECTION 10 -->
+                <section id="ch-10" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 10</span>
+                        <h3 class="text-2xl font-extrabold text-white">10. Multi-Electron Systems: Inter-Electronic Repulsion & Hartree-Fock Approximation</h3>
+                    </div>
+                    <p>
+                        For systems with more than one electron, the Schrödinger equation cannot be solved analytically due to the inter-electronic repulsion term ($1/r_{12}$). To address this, physicists use the Hartree-Fock self-consistent field (SCF) approximation.
+                    </p>
+                    <p>
+                        In this model, each electron is treated as moving within an average spherical potential generated by the nucleus and the other electrons. This inter-electronic repulsion splits the energy levels within a given shell, making the energy of an orbital depend on both its principal quantum number ($n$) and its angular momentum quantum number ($l$). As a result, subshell degeneracy is lifted in multi-electron atoms.
+                    </p>
+                    <p>
+                        The Hartree-Fock approximation iteratively calculates the wavefunction of each electron. By solving these equations self-consistently, chemists can compute electronic structures, ionization potentials, and binding configurations with high precision.
+                    </p>
+                    <p>
+                        These calculations show that inner-shell electrons act as an electrostatic screen, shielding outer valence electrons from the full positive charge of the nucleus. This shielding explains why valence electrons are held less tightly, establishing the physical basis of our periodic table's vertical columns and horizontal trends.
+                    </p>
+                </section>
+
+                <!-- SECTION 11 -->
+                <section id="ch-11" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 11</span>
+                        <h3 class="text-2xl font-extrabold text-white">11. The Quantum Number Architecture: Shells, Subshells, Orbitals, and Spins</h3>
+                    </div>
+                    <p>
+                        The electron configurations of the elements are governed by four quantum numbers, which define the state of each electron:
+                    </p>
+                    <ul class="space-y-4 my-6">
+                        <li class="bg-slate-900/40 p-4 rounded-xl border border-slate-850">
+                            <strong class="text-white block text-sm mb-1">Principal Quantum Number ($n \in \{1, 2, 3, \dots\}$)</strong>
+                            Governs the primary energy level (or shell) and average radial size of the electron cloud. Row transitions across the Periodic Table correspond directly to the value of $n$.
+                        </li>
+                        <li class="bg-slate-900/40 p-4 rounded-xl border border-slate-850">
+                            <strong class="text-white block text-sm mb-1">Angular Momentum Quantum Number ($l \in \{0, 1, \dots, n-1\}$)</strong>
+                            Determines the orbital subshell and spatial shape of the electronic wave function. The value of $l$ maps directly to the orbital block system:
+                            <span class="text-blue-400">$l = 0$ ($s$-orbitals, spherical)</span>,
+                            <span class="text-blue-400">$l = 1$ ($p$-orbitals, dumbbell-shaped)</span>,
+                            <span class="text-blue-400">$l = 2$ ($d$-orbitals, double-dumbbell)</span>, and
+                            <span class="text-blue-400">$l = 3$ ($f$-orbitals, complex multi-lobed structures)</span>.
+                        </li>
+                        <li class="bg-slate-900/40 p-4 rounded-xl border border-slate-850">
+                            <strong class="text-white block text-sm mb-1">Magnetic Quantum Number ($m_l \in \{-l, \dots, +l\}$)</strong>
+                            Defines the orientation of the orbital in three-dimensional space, containing $2l + 1$ degenerate pathways.
+                        </li>
+                        <li class="bg-slate-900/40 p-4 rounded-xl border border-slate-850">
+                            <strong class="text-white block text-sm mb-1">Spin Magnetic Quantum Number ($m_s \in \{-1/2, +1/2\}$)</strong>
+                            Represents the intrinsic spin angular momentum of the electron.
+                        </li>
+                    </ul>
+                    <p>
+                        Together, these quantum numbers form the coordinate system of the periodic table, defining its blocks, groups, and periods.
+                    </p>
+                    <p>
+                        This quantum structure dictates that the number of elements in each horizontal period increases as we fill higher-energy subshells. The capacities of the subshells ($2, 6, 10, 14$) are the direct consequence of these angular momentum and spin rules.
+                    </p>
+                    <p>
+                        These four parameters are mathematically connected to the underlying rotational symmetries of three-dimensional space, showing how the structure of the Periodic Table is derived from fundamental spatial geometry.
+                    </p>
+                </section>
+
+                <!-- SECTION 12 -->
+                <section id="ch-12" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 12</span>
+                        <h3 class="text-2xl font-extrabold text-white">12. The Rules of Assembly: Aufbau, Pauli Exclusion, and Hund's Multiplicity</h3>
+                    </div>
+                    <p>
+                        To determine the electronic configuration of any element, we follow three core physical rules:
+                    </p>
+                    <p>
+                        <strong>1. The Pauli Exclusion Principle:</strong> This quantum mechanical law states that no two fermions (such as electrons) in the same system can share the exact same set of quantum numbers. Within a single orbital (defined by $n$, $l$, and $m_l$), only two electrons can exist, and they must have opposite spin states ($m_s = +1/2$ and $m_s = -1/2$). This principle sets the capacity of the orbital blocks: $s$-blocks can hold up to $2$ electrons, $p$-blocks can hold $6$, $d$-blocks can hold $10$, and $f$-blocks can hold $14$.
+                    </p>
+                    <p>
+                        <strong>2. The Aufbau Principle & Madelung's Rule:</strong> Electrons fill the lowest-energy orbitals available first. The relative energy order of orbitals is defined by Madelung's $(n+l)$ rule: orbitals with a lower $(n+l)$ value are filled first. If two orbitals have identical $(n+l)$ values, the one with the lower $n$ value is filled first. This explains why the $4s$ orbital ($4+0 = 4$) is filled prior to the $3d$ orbital ($3+2 = 5$).
+                    </p>
+                    <p>
+                        <strong>3. Hund's Rule of Maximum Multiplicity:</strong> For degenerate orbitals (orbitals of the same energy, like the three $p$-orbitals), electrons will fill empty orbitals singly with parallel spins ($\uparrow \ \ \uparrow \ \ \uparrow$) before pairing up. This minimizes electron-electron repulsion and maximizes the stabilizing exchange energy of parallel spins.
+                    </p>
+                    <p>
+                        These rules explain why the $4s$ subshell fills before the $3d$ subshell. However, during ionization, transition metals lose their $4s$ electrons first. This apparent contradiction is resolved by considering the effective nuclear charge, which is significantly higher for the inner $3d$ orbitals once the subshell begins to fill.
+                    </p>
+                    <p>
+                        The thermodynamic balance between these rules determines the exact ground state configuration of every element, governing its chemical reactivity and bonding behavior.
+                    </p>
+                </section>
+
+                <!-- SECTION 13 -->
+                <section id="ch-13" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 13</span>
+                        <h3 class="text-2xl font-extrabold text-white">13. Electrostatic Screening: Slater's Rules & Effective Nuclear Charge Calculations</h3>
+                    </div>
+                    <p>
+                        In multi-electron systems, electrons shield one another from the full positive charge of the nucleus. This screening effect is described by the **Effective Nuclear Charge ($Z_{\text{eff}}$)**:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$Z_{\text{eff}} = Z - \sigma$$
+                    </div>
+                    <p>
+                        Where $Z$ is the atomic number and $\sigma$ is the shielding constant. We can calculate $\sigma$ using Slater's Rules. First, write the electron configuration in grouped blocks:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400">
+                        <span class="text-amber-400 font-bold block mb-2">Slater's Grouping Scheme:</span>
+                        (1s) (2s, 2p) (3s, 3p) (3d) (4s, 4p) (4d) (4f) ...
+                    </div>
+                    <p>
+                        For an electron in an $ns$ or $np$ orbital, the shielding contributions are:
+                    </p>
+                    <ul class="list-disc pl-5 mb-4 space-y-1">
+                        <li>Electrons in higher energy groups contribute $0.00$.</li>
+                        <li>Electrons in the same group contribute $0.35$ each (except $1s$, which contributes $0.30$).</li>
+                        <li>Electrons in the next inner shell ($n-1$) contribute $0.85$ each.</li>
+                        <li>Electrons in deeper shells ($n-2$ and lower) contribute $1.00$ each.</li>
+                    </ul>
+                    <p>
+                        For $d$ or $f$ valence electrons, the rules are:
+                    </p>
+                    <ul class="list-disc pl-5 mb-4 space-y-1">
+                        <li>Electrons in higher energy groups contribute $0.00$.</li>
+                        <li>Electrons in the same group contribute $0.35$ each.</li>
+                        <li>All electrons in deeper shells contribute $1.00$ each.</li>
+                    </ul>
+                    <p>
+                        Let us calculate $Z_{\text{eff}}$ for a $4s$ valence electron versus a $3d$ electron in Manganese ($Z=25$), with the configuration:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$(1s^2)(2s^2, 2p^6)(3s^2, 3p^6)(3d^5)(4s^2)$$
+                    </div>
+                    
+                    <p>
+                        For a $4s$ electron:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400">
+                        $$\begin{aligned}
+                        \sigma_{4s} &= (1 \times 0.35) + (13 \times 0.85) + (10 \times 1.00) \\
+                        \sigma_{4s} &= 0.35 + 11.05 + 10.00 = 21.40 \\
+                        Z_{\text{eff}}(4s) &= 25 - 21.40 = 3.60
+                        \end{aligned}$$
+                    </div>
+
+                    <p>
+                        For a $3d$ electron:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400">
+                        $$\begin{aligned}
+                        \sigma_{3d} &= (4 \times 0.35) + (18 \times 1.00) \\
+                        \sigma_{3d} &= 1.40 + 18.00 = 19.40 \\
+                        Z_{\text{eff}}(3d) &= 25 - 19.40 = 5.60
+                        \end{aligned}$$
+                    </div>
+                </section>
+
+                <!-- SECTION 14 -->
+                <section id="ch-14" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 14</span>
+                        <h3 class="text-2xl font-extrabold text-white">14. Macro-Scale Periodicity: Detailed Atomic & Ionic Radii Trends</h3>
+                    </div>
+                    <p>
+                        The effective nuclear charge experienced by valence electrons directly governs the physical size of atoms. As we move from left to right across a period, the atomic number $Z$ increases while shielding remains relatively constant because electrons are added to the same principal energy shell. This increases $Z_{\text{eff}}$, pulling the electron cloud closer to the nucleus and causing atomic radii to decrease across a period.
+                    </p>
+                    <p>
+                        Conversely, as we move down a group, atomic radii increase. Although $Z_{\text{eff}}$ increases slightly down a group, this effect is outweighed by the addition of entirely new occupied principal energy shells ($n$), which place valence electrons significantly further from the nucleus.
+                    </p>
+                    <p>
+                        Ionic radii follow similar trends but are highly sensitive to electron-electron repulsion. Cations are always smaller than their parent atoms because the loss of electrons reduces repulsion, allowing the remaining electron cloud to contract under the nuclear pull.
+                    </p>
+                    <p>
+                        Conversely, anions are always larger than their parent atoms. Adding electrons increases mutual repulsion, expanding the electron cloud. This size difference is particularly visible in isoelectronic series, where ions have the same electron configuration but different nuclear charges; as the nuclear charge increases, the ionic radius decreases.
+                    </p>
+                </section>
+
+                <!-- SECTION 15 -->
+                <section id="ch-15" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 15</span>
+                        <h3 class="text-2xl font-extrabold text-white">15. Energy Wells: Ionization Potentials, Electron Affinities, and Orbital Nodes</h3>
+                    </div>
+                    <p>
+                        First Ionization Energy ($\text{IE}_1$) is the energy required to remove one mole of electrons from one mole of gaseous atoms to form gaseous $1+$ cations:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\text{X(g)} \longrightarrow \text{X}^+\text{(g)} + \text{e}^-$$
+                    </div>
+                    <p>
+                        Ionization energy generally increases across a period due to rising $Z_{\text{eff}}$, and decreases down a group as valence electrons are further from the nucleus and shielded by core shells. Notable exceptions occur at half-filled or fully-filled subshells, where the added stability of symmetric electron distributions makes electrons slightly harder or easier to remove.
+                    </p>
+                    <p>
+                        For example, the first ionization energy drops slightly between Nitrogen ($2p^3$) and Oxygen ($2p^4$). Nitrogen has a stable, half-filled $2p$ subshell where each of the three $p$-orbitals contains exactly one unpaired electron. Oxygen has four $2p$ electrons, meaning one $2p$ orbital must contain two paired electrons. The electrostatic repulsion between these two paired electrons in the same orbital makes it easier to remove one of them, resulting in a lower ionization energy.
+                    </p>
+                    <p>
+                        Electron Affinity ($\Delta H_{\text{ea1}}$) is the enthalpy change when one mole of gaseous atoms gains one mole of electrons to form gaseous $1-$ anions:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\text{X(g)} + \text{e}^- \longrightarrow \text{X}^-\text{(g)}$$
+                    </div>
+                    <p>
+                        While electron affinity generally becomes more exothermic across a period as $Z_{\text{eff}}$ increases, anomalies occur at elements with filled or half-filled subshells (such as Nitrogen or Beryllium), which resist accepting an extra electron.
+                    </p>
+                </section>
+
+                <!-- SECTION 16 -->
+                <section id="ch-16" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 16</span>
+                        <h3 class="text-2xl font-extrabold text-white">16. Bonding Affinities: Pauling, Mulliken, and Allred-Rochow Electronegativity Scales</h3>
+                    </div>
+                    <p>
+                        Electronegativity ($\chi$) measures an atom's ability to attract a shared pair of electrons in a covalent bond. Several scales are used to quantify this property:
+                    </p>
+                    <ul class="space-y-4 my-6">
+                        <li class="bg-slate-900/40 p-4 rounded-xl border border-slate-850">
+                            <strong class="text-white block text-sm mb-1">Pauling Scale ($\chi_{\text{P}}$)</strong>
+                            Based on the bond dissociation energies of heteronuclear diatomic molecules relative to homonuclear diatomic reference molecules.
+                        </li>
+                        <li class="bg-slate-900/40 p-4 rounded-xl border border-slate-850">
+                            <strong class="text-white block text-sm mb-1">Mulliken Scale ($\chi_{\text{M}}$)</strong>
+                            Calculates electronegativity as the average of an element's first ionization energy ($\text{IE}_1$) and its first electron affinity ($E_{\text{ea1}}$):
+                            <span class="text-blue-400">$$\chi_{\text{M}} = \frac{\text{IE}_1 + E_{\text{ea1}}}{2}$$</span>
+                        </li>
+                        <li class="bg-slate-900/40 p-4 rounded-xl border border-slate-850">
+                            <strong class="text-white block text-sm mb-1">Allred-Rochow Scale ($\chi_{\text{AR}}$)</strong>
+                            Treats electronegativity as the electrostatic force exerted by the effective nuclear charge ($Z_{\text{eff}}$) on the valence electrons at the atom's surface:
+                            <span class="text-blue-400">$$\chi_{\text{AR}} = 0.359 \frac{Z_{\text{eff}}}{r_{\text{cov}}^2} + 0.744$$</span>
+                        </li>
+                    </ul>
+                    <p>
+                        These different scales offer unique physical insights. While the Pauling scale is based on thermodynamic bond strengths, the Mulliken scale directly links electronegativity to atomic ionization and electron capture energies, and the Allred-Rochow scale treats it as an electrostatic force acting on valence electrons.
+                    </p>
+                    <p>
+                        These scales align remarkably well, showing that electronegativity peaks in small, highly-charged nonmetals (like Fluorine) and reaches its minimum in large, low-charged alkali metals (like Cesium).
+                    </p>
+                </section>
+
+                <!-- SECTION 17 -->
+                <section id="ch-17" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 17</span>
+                        <h3 class="text-2xl font-extrabold text-white">17. Main Group Profiles: Alkali, Alkaline Earth, Chalcogens, Halogens, and Noble Gases</h3>
+                    </div>
+                    <p>
+                        The vertical columns of the Periodic Table align elements by valence configurations, resulting in distinct chemical families:
+                    </p>
+                    <p>
+                        <strong>Group 1 (Alkali Metals, $ns^1$):</strong> Highly reactive metals with low ionization energies. They react vigorously with water to form alkaline hydroxides and hydrogen gas. Reactivity increases down the group as the valence electron is further from the nucleus and lost more easily.
+                    </p>
+                    <p>
+                        <strong>Group 17 (Halogens, $ns^2 np^5$):</strong> Reactive nonmetals that exist as diatomic molecules. They have highly exothermic electron affinities, readily gaining one electron to achieve a stable octet.
+                    </p>
+                    <p>
+                        <strong>Group 18 (Noble Gases, $ns^2 np^6$):</strong> Chemically inert, colorless, odorless monoatomic gases with filled valence shells, making them exceptionally stable.
+                    </p>
+                    <p>
+                        These groups show clear vertical trends in physical properties, such as melting and boiling points. For alkali metals, melting points decrease down the group as larger ions form weaker metallic bonds.
+                    </p>
+                    <p>
+                        In contrast, for halogens, melting and boiling points increase down the group. Larger halogen molecules have larger, more polarizable electron clouds, resulting in stronger dispersion forces (van der Waals interactions) between molecules, which require more thermal energy to break.
+                    </p>
+                </section>
+
+                <!-- SECTION 18 -->
+                <section id="ch-18" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 18</span>
+                        <h3 class="text-2xl font-extrabold text-white">18. Transition Metals & Coordination Chemistry: Crystal Field Splitting</h3>
+                    </div>
+                    <p>
+                        Transition metals are characterized by partially filled $d$ subshells. They exhibit variable oxidation states, high melting points, and form colored coordination complexes.
+                    </p>
+                    <p>
+                        In transition metal complexes, Crystal Field Theory explains how the approach of negative ligands splits the degenerate $d$-orbitals of the metal. In an octahedral coordinate field, the orbitals split into a higher-energy doublet ($e_g$) and a lower-energy triplet ($t_{2g}$):
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$\Delta_o = E(e_g) - E(t_{2g})$$
+                    </div>
+                    <p>
+                        The magnitude of $\Delta_o$ relative to the spin pairing energy ($P$) determines whether a complex adopts a high-spin configuration (maximizing unpaired electrons) or a low-spin configuration (pairing electrons in the lower level first). This splitting is responsible for the unique colors of transition metal complexes.
+                    </p>
+                    <p>
+                        This d-orbital splitting also governs the magnetic properties of these complexes. High-spin complexes, which have more unpaired electrons, display paramagnetic behavior, while low-spin complexes, which have paired electrons, are often diamagnetic.
+                    </p>
+                    <p>
+                        Additionally, coordinate fields can undergo Jahn-Teller distortions. According to the Jahn-Teller theorem, any non-linear molecule with a degenerate electronic state will distort to lower its symmetry, remove the degeneracy, and lower its energy. This effect is particularly pronounced in octahedral $d^9$ complexes like copper(II), where axial bonds lengthen to stabilize the system.
+                    </p>
+                </section>
+
+                <!-- SECTION 19 -->
+                <section id="ch-19" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 19</span>
+                        <h3 class="text-2xl font-extrabold text-white">19. Relativistic Electrodynamics: Bohr Radius Contraction & Gold/Mercury Anomalies</h3>
+                    </div>
+                    <p>
+                        For heavy elements ($Z \ge 70$), classical quantum models must incorporate Einstein's special relativity. The average velocity $v$ of a $1s$ core electron scales with nuclear charge:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$v \approx \frac{Z}{137} c$$
+                    </div>
+                    <p>
+                        For Gold ($Z=79$), $v \approx 0.58 c$. This causes a relativistic mass increase of the electron:
+                    </p>
+                    <div class="math-block p-5 rounded-xl my-6 font-mono text-sm overflow-x-auto text-blue-400 text-center">
+                        $$m_{\text{rel}} = \frac{m_0}{\sqrt{1 - (v/c)^2}}$$
+                    </div>
+                    <p>
+                        This mass increase causes a contraction of the Bohr radius of $s$ and $p$ orbitals, stabilizing them. This contracts and stabilizes the $6s$ orbital while expanding the $5d$ orbitals, narrowing the $5d \to 6s$ energy gap in Gold ($Z=79$) so it absorbs blue light and reflects its signature yellow luster. In Mercury ($Z=80$), the highly stable, contracted $6s^2$ shell resists bonding, keeping it liquid at room temperature.
+                    </p>
+                    <p>
+                        These relativistic corrections also explain the Inert Pair Effect in heavy main-group elements like Lead ($Z=82$) and Bismuth ($Z=83$). Because the $6s^2$ subshell is highly contracted and stabilized, these two electrons resist participating in chemical bonds.
+                    </p>
+                    <p>
+                        Consequently, these elements prefer oxidation states that are $2$ lower than their group numbers, such as Lead preferring $\text{Pb}^{2+}$ over $\text{Pb}^{4+}$. This inert pair effect is a direct chemical consequence of relativistic quantum mechanics.
+                    </p>
+                </section>
+
+                <!-- SECTION 20 -->
+                <section id="ch-20" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Ch. 20</span>
+                        <h3 class="text-2xl font-extrabold text-white">20. The Superheavy Frontier: Island of Stability & The Limits of Periodicity</h3>
+                    </div>
+                    <p>
+                        At the extreme end of the Periodic Table, elements heavier than Uranium ($Z > 92$) are entirely synthetic and unstable. These superheavy elements are synthesized in particle accelerators by colliding heavy nuclei.
+                    </p>
+                    <p>
+                        In this region of extreme nuclear charge, severe spin-orbit coupling splits degenerate subshells into wide, distinct energy bands. This orbital splitting can alter chemical properties, causing elements to depart from their expected group trends. For example, Flerovium ($Z=114$, Group 14) is predicted to behave more like an inert noble gas than a typical metal, showing how the boundaries of periodic law are tested at the extreme limits of nuclear stability.
+                    </p>
+                    <p>
+                        Furthermore, the nucleus itself reaches limits of stability. Elements with high atomic numbers decay rapidly via alpha emission or spontaneous fission. However, nuclear shell theory predicts an **"Island of Stability"** around magic numbers of protons ($Z = 114, 120, \text{ or } 126$) and neutrons ($N = 184$), where superheavy nuclei may possess unexpectedly long half-lives, shielding them from immediate decay.
+                    </p>
+                    <p>
+                        As scientists attempt to synthesize even heavier elements, such as those in Period 8, the periodic table faces both chemical and physical boundaries. At extremely high atomic numbers ($Z > 137$), the core $1s$ electrons would theoretically require velocities exceeding the speed of light, indicating that classical quantum models reach their limits, requiring a fully relativistic quantum field theory description of matter.
+                    </p>
+                </section>
+
+                <!-- Perio Playgound -->
+                
+     <section id="play-1" class="pt-12 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-xs font-semibold">Perio Playgound</span>
+                    </div>
+    
+    <div class="dashboard-layout">
+        
+        <div class="panel">
+            <div class="panel-heading">
+                <div>Core Periodic Matrix Viewport <span class="panel-subheading">IUPAC Structural Coordinate Layout</span></div>
+            </div>
+            
+            <div class="search-controls-wrapper">
+                <div class="search-bar-input-column">
+                    <label for="engine-search-bar" class="search-control-label">Search Query</label>
+                    <input type="text" id="engine-search-bar">
+                </div>
+                <div class="search-dropdown-select-column">
+                    <label class="search-control-label">Target Field Isolation Filters</label>
+                    <div class="custom-checkbox-dropdown" id="custom-filter-dropdown-root">
+                        <button type="button" class="dropdown-toggle-btn" id="dropdown-display-trigger">
+                            <span id="dropdown-selected-text">Filter: None</span>
+                            <span class="dropdown-caret">▼</span>
+                        </button>
+                        <div class="dropdown-menu-panel">
+                            <div class="dropdown-group-label">Strict Isolated Search Criteria Fields</div>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="num"> Atomic Number</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="electronegativity"> Electronegativity</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="radius"> Atomic Radius (pm)</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="ionization"> Ionization Energy (kJ/mol)</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="melting"> Melting Point (K)</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="boiling"> Boiling Point (K)</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="density"> Density Metric</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="year"> Discovery Year</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="valence"> Valence Electron Count</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="period"> Period Layer Index</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="group"> Group Assignment Column</label>
+
+                            <div class="dropdown-group-label">Element Classifications Filters</div>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="Nonmetal"> Nonmetals</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="Noble Gas"> Noble Gases</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="Alkali Metal"> Alkali Metals</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="Alkaline Earth Metal"> Alkaline Earth Metals</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="Metalloid"> Metalloids</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="Halogen"> Halogens</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="Transition Metal"> Transition Metals</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="Post-Transition Metal"> Post-Transition Metals</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="Lanthanide"> Lanthanides</label>
+                            <label class="checkbox-option"><input type="checkbox" class="filter-checkbox" value="Actinide"> Actinides</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scrollable-matrix-viewport">
+                <div class="periodic-matrix-grid" id="matrix-grid-viewport-root"></div>
+            </div>
+
+            
+        </div>
+
+        
+
+    </div>
+
+    <div class="sidebar-panel-container">
+            <div class="panel">
+                <div class="panel-heading">Variable Inspector<span class="panel-subheading">Advanced Configuration Mappings</span></div>
+                <div id="inspector-viewport-root">
+                    <p class="empty-inspector-fallback">Select any matrix node element from the layout to parse advanced configuration variables.</p>
+                </div>
+            </div>
+        </div>
+
+   <div class="panel arena-bottom-panel">
+        <div class="panel-heading arena-panel-header">
+            <div>Customizable Evaluation Subsystem <span class="panel-subheading">Targeted Diagnostic Engine</span></div>
+            <span id="quiz-streak-display">Streak: 0</span>
+        </div>
+        <div class="quiz-config-bar">
+            <div class="config-group">
+                <label for="quiz-filter-type">Target Category Filter:</label>
+                <input type="text" id="quiz-filter-type-search" class="dropdown-search-input" placeholder="Type to filter categories...">
+                <select id="quiz-filter-type" class="quiz-select">
+                    <option value="ALL" selected>All Element Groups</option>
+                    <option value="Nonmetal">Nonmetals</option>
+                    <option value="Noble Gas">Noble Gases</option>
+                    <option value="Alkali Metal">Alkali Metals</option>
+                    <option value="Alkaline Earth Metal">Alkaline Earth Metals</option>
+                    <option value="Metalloid">Metalloids</option>
+                    <option value="Halogen">Halogens</option>
+                    <option value="Transition Metal">Transition Metals</option>
+                </select>
+            </div>
+            
+            <div class="config-group">
+                <label for="quiz-filter-topic">Target Topic Focus:</label>
+                <input type="text" id="quiz-filter-topic-search" class="dropdown-search-input" placeholder="Type to filter topics...">
+                <select id="quiz-filter-topic" class="quiz-select">
+                    <option value="ALL" selected>All Conceptual Variables</option>
+                    <option value="orbital">Electron Configurations</option>
+                    <option value="bohr">Bohr Shell Layout Sequence</option>
+                    <option value="valence">Valence Electron Counts</option>
+                    <option value="discoverer">Historical Discovery Records</option>
+                    <option value="state">Thermodynamic States of Matter</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="quiz-engine-wrapper arena-wrapper">
+    <div class="quiz-question-box arena-question" id="quiz-question-viewport">
+        Configure your custom rules above. Then, click the "Generate Question" button below to receive a targeted quiz question based on your selected filters. Your performance will be tracked in real-time, allowing you to monitor your streaks and overall accuracy as you engage with the material.
+    </div>
+    
+    <div id="quiz-hint-container" class="quiz-hint-box">
+        <button type="button" id="quiz-hint-toggle-btn" class="hint-toggle-btn">Show Structural Hint</button>
+        <div id="hint-content-text" class="hint-content"></div>
+    </div>
+
+    <div class="quiz-option-list arena-options-grid" id="quiz-options-container-root"></div>
+    
+    <button type="button" class="quiz-prime-action-button arena-prime-btn" id="quiz-generation-action-trigger">Generate Question</button>
+    
+    <div id="quiz-explanation-hub" class="explanation-viewport">
+        <h4>Review Summary Analysis</h4>
+        <div id="explanation-content-area"></div>
+    </div>
+
+    <div class="quiz-score-grid arena-score-grid">
+        <div class="quiz-score-tile arena-score-tile">Correct Evaluated<div id="quiz-score-correct-counter" class="arena-counter">0</div></div>
+        <div class="quiz-score-tile arena-score-tile">Total Queries Processed<div id="quiz-score-total-counter" class="arena-counter">0</div></div>
+    </div>
+</div>
+</section>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 text-center py-6 text-xs text-slate-500 mt-auto">
+        <p class="m-0">&copy; 2026 Periodic Table Educational Suite. Designed for advanced physical chemistry study and research.</p>
+    </footer>
+
+    <!-- Safe, Post-DOM Load KaTeX Auto-Render Script & Scroll spy logic -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Initialize KaTeX
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+
+            // Set up scroll listener for progress and TOC highlighting
+            window.addEventListener('scroll', updateReadingProgress);
+            updateReadingProgress(); // Initial check
+        });
+
+        // 20 Chapters defined sequentially
+        const chapterIds = [
+            "ch-1", "ch-2", "ch-3", "ch-4", "ch-5", "ch-6", "ch-7", "ch-8", "ch-9", "ch-10",
+            "ch-11", "ch-12", "ch-13", "ch-14", "ch-15", "ch-16", "ch-17", "ch-18", "ch-19", "ch-20"
+        ];
+
+        function updateReadingProgress() {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            
+            // Update top progress bar
+            document.getElementById("readingProgress").style.width = scrolled + "%";
+            document.getElementById("progressPercentage").innerText = Math.round(scrolledScored(scrolled)) + "% Read";
+
+            // Find current section in view
+            let activeId = chapterIds[0];
+            for (let i = 0; i < chapterIds.length; i++) {
+                const el = document.getElementById(chapterIds[i]);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    // If element top is above middle of viewport, consider it active
+                    if (rect.top <= window.innerHeight * 0.4) {
+                        activeId = chapterIds[i];
+                    }
+                }
+            }
+
+            // Update TOC highlighted links (No autoscrolling of sidebar link per user request)
+            const tocLinks = document.querySelectorAll(".toc-link");
+            tocLinks.forEach(link => {
+                if (link.getAttribute("href") === "#" + activeId) {
+                    link.classList.add("toc-active");
+                } else {
+                    link.classList.remove("toc-active");
+                }
+            });
+        }
+
+        // Safe helper to avoid scroll jump inconsistencies
+        function scrolledScored(val) {
+            if (val > 100) return 100;
+            if (val < 0) return 0;
+            return val;
+        }
+
+        // Return current active chapter index
+        function getActiveIndex() {
+            let activeIndex = 0;
+            for (let i = 0; i < chapterIds.length; i++) {
+                const el = document.getElementById(chapterIds[i]);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight * 0.45) {
+                        activeIndex = i;
+                    }
+                }
+            }
+            return activeIndex;
+        }
+
+        // Navigation Actions
+        function skipToPrevious() {
+            const currentIndex = getActiveIndex();
+            if (currentIndex > 0) {
+                const prevId = chapterIds[currentIndex - 1];
+                document.getElementById(prevId).scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Safe skip to next logic using target ID
+        function skipToNext() {
+            const currentIndex = getActiveIndex();
+            if (currentIndex < chapterIds.length - 1) {
+                const nextId = chapterIds[currentIndex + 1];
+                document.getElementById(nextId).scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- GLOBAL STATE VARIABLES ---
+        let currentTargetMetricProperty = 'num';
+        let currentSelectedElementNum = null;
+        let isSearchExpandedShowAll = false;
+        let activeQuizElementTarget = null;
+        let activeQuizCorrectAnswerString = null;
+        let activeQuizTopicKey = "";
+        
+        let runtimeQuizCorrectAccumulator = 0;
+        let runtimeQuizTotalAccumulator = 0;
+        let runtimeQuizStreakAccumulator = 0;
+
+        // --- IUPAC GRID COORDINATES MAP ---
+        const standardIupacCoordinatesMap = {
+            1: {r:1, c:1}, 2: {r:1, c:18},
+            3: {r:2, c:1}, 4: {r:2, c:2}, 5: {r:2, c:13}, 6: {r:2, c:14}, 7: {r:2, c:15}, 8: {r:2, c:16}, 9: {r:2, c:17}, 10: {r:2, c:18},
+            11: {r:3, c:1}, 12: {r:3, c:2}, 13: {r:3, c:13}, 14: {r:3, c:14}, 15: {r:3, c:15}, 16: {r:3, c:16}, 17: {r:3, c:17}, 18: {r:3, c:18},
+            19: {r:4, c:1}, 20: {r:4, c:2}, 21: {r:4, c:3}, 22: {r:4, c:4}, 23: {r:4, c:5}, 24: {r:4, c:6}, 25: {r:4, c:7}, 26: {r:4, c:8}, 27: {r:4, c:9}, 28: {r:4, c:10}, 29: {r:4, c:11}, 30: {r:4, c:12}, 31: {r:4, c:13}, 32: {r:4, c:14}, 33: {r:4, c:15}, 34: {r:4, c:16}, 35: {r:4, c:17}, 36: {r:4, c:18},
+            37: {r:5, c:1}, 38: {r:5, c:2}, 39: {r:5, c:3}, 40: {r:5, c:4}, 41: {r:5, c:5}, 42: {r:5, c:6}, 43: {r:5, c:7}, 44: {r:5, c:8}, 45: {r:5, c:9}, 46: {r:5, c:10}, 47: {r:5, c:11}, 48: {r:5, c:12}, 49: {r:5, c:13}, 50: {r:5, c:14}, 51: {r:5, c:15}, 52: {r:5, c:16}, 53: {r:5, c:17}, 54: {r:5, c:18},
+            55: {r:6, c:1}, 56: {r:6, c:2}, 57: {r:9, c:3}, 
+            58: {r:9, c:4}, 59: {r:9, c:5}, 60: {r:9, c:6}, 61: {r:9, c:7}, 62: {r:9, c:8}, 63: {r:9, c:9}, 64: {r:9, c:10}, 65: {r:9, c:11}, 66: {r:9, c:12}, 67: {r:9, c:13}, 68: {r:9, c:14}, 69: {r:9, c:15}, 70: {r:9, c:16},
+            71: {r:6, c:3}, 72: {r:6, c:4}, 73: {r:6, c:5}, 74: {r:6, c:6}, 75: {r:6, c:7}, 76: {r:6, c:8}, 77: {r:6, c:9}, 78: {r:6, c:10}, 79: {r:6, c:11}, 80: {r:6, c:12}, 81: {r:6, c:13}, 82: {r:6, c:14}, 83: {r:6, c:15}, 84: {r:6, c:16}, 85: {r:6, c:17}, 86: {r:6, c:18},
+            87: {r:7, c:1}, 88: {r:7, c:2}, 89: {r:10, c:3}, 
+            90: {r:10, c:4}, 91: {r:10, c:5}, 92: {r:10, c:6}, 93: {r:10, c:7}, 94: {r:10, c:8}, 95: {r:10, c:9}, 96: {r:10, c:10}, 97: {r:10, c:11}, 98: {r:10, c:12}, 99: {r:10, c:13}, 100: {r:10, c:14}, 101: {r:10, c:15}, 102: {r:10, c:16},
+            103: {r:7, c:3}, 104: {r:7, c:4}, 105: {r:7, c:5}, 106: {r:7, c:6}, 107: {r:7, c:7}, 108: {r:7, c:8}, 109: {r:7, c:9}, 110: {r:7, c:10}, 111: {r:7, c:11}, 112: {r:7, c:12}, 113: {r:7, c:13}, 114: {r:7, c:14}, 115: {r:7, c:15}, 116: {r:7, c:16}, 117: {r:7, c:17}, 118: {r:7, c:18}
+        };
+
+        // --- CORE APPLICATION BOOTSTRAPPER ---
+        function computeSanitizedCategoryClassName(typeValueString) {
+            return 'cat-' + String(typeValueString).toLowerCase().trim().replace(/ /g, '-');
+        }
+
+        function bootstrapPeriodicEngine() {
+            if (typeof elements === 'undefined' || !Array.isArray(elements)) {
+                document.getElementById('matrix-grid-viewport-root').innerHTML = `
+                    <div class="error-boundary-box">
+                        <h3>Dataset Verification Failure</h3>
+                        <p>The global variable sequence array 'elements' could not be found within data.js.</p>
+                    </div>`;
+                document.getElementById('engine-status-badge').innerText = "Status: Dataset Error";
+                return;
+            }
+
+            // Injects programmatic "Filter: None" reset choice inside the custom checkbox menu
+            const customMenuPanel = document.querySelector('#custom-filter-dropdown-root .dropdown-menu-panel');
+            if (customMenuPanel && !document.getElementById('checkbox-filter-none-option')) {
+                const noneWrapper = document.createElement('label');
+                noneWrapper.className = 'checkbox-option';
+                noneWrapper.id = 'checkbox-filter-none-option';
+                noneWrapper.style.cssText = "border-bottom: 1px solid #222; margin-bottom: 4px; padding-bottom: 8px; font-weight: bold; color: var(--accent-primary);";
+                noneWrapper.innerHTML = `<input type="checkbox" id="master-none-checkbox" value="none"> Reset Filters (None)`;
+                customMenuPanel.insertBefore(noneWrapper, customMenuPanel.firstChild);
+                
+                document.getElementById('master-none-checkbox').addEventListener('change', function() {
+                    if (this.checked) {
+                        document.querySelectorAll('#custom-filter-dropdown-root .filter-checkbox').forEach(cb => cb.checked = false);
+                        this.checked = false;
+                        handleUnifiedSelectionSwap();
+                    }
+                });
+            }
+
+            // Injects structural "Filter: None" mappings onto evaluation selectors if they don't exist
+            const quizTypeSelect = document.getElementById('quiz-filter-type');
+            if (quizTypeSelect && quizTypeSelect.options[0]) quizTypeSelect.options[0].text = "Filter: None";
+            const quizTopicSelect = document.getElementById('quiz-filter-topic');
+            if (quizTopicSelect && quizTopicSelect.options[0]) quizTopicSelect.options[0].text = "Filter: None";
+
+            document.getElementById('engine-status-badge').innerText = `Database Synced: ${elements.length} / 118 Nodes Active`;
+            
+            const matrixGridParentNode = document.getElementById('matrix-grid-viewport-root');
+            matrixGridParentNode.innerHTML = '';
+
+            elements.forEach(elementNodeData => {
+                const absoluteLayoutCoordinates = standardIupacCoordinatesMap[elementNodeData.num];
+                if (!absoluteLayoutCoordinates) return;
+
+                const cardBoxElement = document.createElement('div');
+                cardBoxElement.className = `element-node-box ${computeSanitizedCategoryClassName(elementNodeData.type)}`;
+                cardBoxElement.style.gridRow = absoluteLayoutCoordinates.r;
+                cardBoxElement.style.gridColumn = absoluteLayoutCoordinates.c;
+                cardBoxElement.setAttribute('id', `matrix-node-element-${elementNodeData.num}`);
+                
+                cardBoxElement.onclick = () => {
+                    executePropertyInspection(elementNodeData);
+                };
+
+                cardBoxElement.innerHTML = `
+                    <div class="top-metadata-row">
+                        <div class="atomic-index-label">${elementNodeData.num}</div>
+                    </div>
+                    <div class="symbol-core-display">${elementNodeData.symbol}</div>
+                    <div class="name-string-display" style="white-space: normal; word-break: break-word; overflow: visible; text-overflow: clip;">${elementNodeData.name}</div>
+                    <div class="variable-badge-display" id="metric-badge-target-${elementNodeData.num}">${elementNodeData[currentTargetMetricProperty]}</div>
+                `;
+                
+                matrixGridParentNode.appendChild(cardBoxElement);
+            });
+
+            const horizontalBlockSpacer = document.createElement('div');
+            horizontalBlockSpacer.className = 'lanthanide-actinide-spacer';
+            horizontalBlockSpacer.style.gridRow = 8;
+            horizontalBlockSpacer.style.gridColumn = '1 / span 18';
+            matrixGridParentNode.appendChild(horizontalBlockSpacer);
+            
+            if (elements.length > 0) {
+                executePropertyInspection(elements[0]);
+            }
+        }
+
+        // --- FILTER CONFIGURATION READOUT EXTRACTIONS ---
+        function getActiveCheckboxFilterValues() {
+            const checkboxes = document.querySelectorAll('#custom-filter-dropdown-root .filter-checkbox');
+            return Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value.trim());
+        }
+
+        function handleDisplayPropertySwap() {
+            const chosenSelections = getActiveCheckboxFilterValues();
+            const metricProperties = ['num', 'electronegativity', 'radius', 'ionization', 'melting', 'boiling', 'density', 'year', 'valence', 'period', 'group'];
+            
+            const discoveredMetric = chosenSelections.find(val => metricProperties.includes(val));
+            if (discoveredMetric) {
+                currentTargetMetricProperty = discoveredMetric;
+            }
+
+            elements.forEach(elementNodeData => {
+                const individualBadgeDOMReference = document.getElementById(`metric-badge-target-${elementNodeData.num}`);
+                if (individualBadgeDOMReference) {
+                    individualBadgeDOMReference.innerText = elementNodeData[currentTargetMetricProperty] !== undefined ? elementNodeData[currentTargetMetricProperty] : 'N/A';
+                }
+            });
+        }
+        
+        // --- LIVE LOGICAL FILTERING & STRICT SEARCH ENGINE PIPELINE ---
+        function handleGlobalSearchFilter() {
+            const queryRaw = document.getElementById('engine-search-bar').value.trim();
+            const queryLower = queryRaw.toLowerCase();
+            const matrixContainer = document.getElementById('matrix-grid-viewport-root');
+            if (!matrixContainer) return;
+
+            const existingToggleContainer = document.getElementById('dynamic-search-toggle-box');
+            if (existingToggleContainer) existingToggleContainer.remove();
+            const oldBanner = document.getElementById('search-empty-state-banner');
+            if (oldBanner) oldBanner.remove();
+
+            const chosenSelections = getActiveCheckboxFilterValues();
+            const quizGroupFilter = document.getElementById('quiz-filter-type') ? document.getElementById('quiz-filter-type').value : 'ALL';
+            const quizTopicFilter = document.getElementById('quiz-filter-topic') ? document.getElementById('quiz-filter-topic').value : 'ALL';
+
+            const standardMetricsList = ['num', 'electronegativity', 'radius', 'ionization', 'melting', 'boiling', 'density', 'year', 'valence', 'period', 'group'];
+            
+            const activeSearchKeys = chosenSelections.filter(v => standardMetricsList.includes(v));
+            const activeClassificationFilters = chosenSelections.filter(v => !standardMetricsList.includes(v));
+
+            let exactPrimaryMatches = [];
+            let partialSecondaryMatches = [];
+
+            const propertyLabels = {
+                num: "Atomic Number",
+                electronegativity: "Electronegativity",
+                radius: "Atomic Radius",
+                ionization: "Ionization Energy",
+                melting: "Melting Point",
+                boiling: "Boiling Point",
+                density: "Density",
+                year: "Discovery Year",
+                valence: "Valence Electrons",
+                period: "Period Layer",
+                group: "Group Column",
+                name: "Name",
+                symbol: "Symbol"
+            };
+
+            elements.forEach(elementNodeData => {
+                const cardDOM = document.getElementById(`matrix-node-element-${elementNodeData.num}`);
+                if (!cardDOM) return;
+
+                cardDOM.classList.remove('node-dimmed-state', 'search-match-primary', 'search-match-secondary');
+                cardDOM.style.display = ''; 
+                cardDOM.style.order = '';
+                cardDOM.style.gridRow = '';
+                cardDOM.style.gridColumn = '';
+                
+                const oldMeta = cardDOM.querySelector('.search-meta-row-info');
+                if (oldMeta) oldMeta.remove();
+
+                // --- COMPLIANT STRICTOR VARIABLE MATCHING RULES (AND MAPPINGS) ---
+                let satisfiesAllActiveFilters = true;
+
+                if (activeClassificationFilters.length > 0) {
+                    const matchedAll = activeClassificationFilters.every(filterVal => 
+                        String(elementNodeData.type).toLowerCase() === filterVal.toLowerCase()
+                    );
+                    if (!matchedAll) satisfiesAllActiveFilters = false;
+                }
+
+                if (quizGroupFilter !== "ALL" && quizGroupFilter !== "Filter: None") {
+                    if (!String(elementNodeData.type).toLowerCase().includes(quizGroupFilter.toLowerCase())) {
+                        satisfiesAllActiveFilters = false;
+                    }
+                }
+                if (quizTopicFilter !== "ALL" && quizTopicFilter !== "Filter: None") {
+                    const extractedValue = elementNodeData[quizTopicFilter];
+                    if (extractedValue === undefined || extractedValue === null || extractedValue === "" || extractedValue === 0 || extractedValue === "0") {
+                        satisfiesAllActiveFilters = false;
+                    }
+                }
+
+                if (!satisfiesAllActiveFilters) {
+                    cardDOM.classList.add('node-dimmed-state');
+                    return;
+                }
+
+                if (queryRaw.length === 0) {
+                    return;
+                }
+
+                let isPrimary = false;
+                let isSecondary = false;
+                let matchedFieldsFound = [];
+
+                // --- STRENGTHENED RELEVANCE ENGINE (Prioritizes Exact Whole Queries Instead of Contained Partial Matches) ---
+                if (activeSearchKeys.length > 0) {
+                    activeSearchKeys.forEach(metricKey => {
+                        const targetAttributeValue = String(elementNodeData[metricKey]).toLowerCase().trim();
+                        if (targetAttributeValue === queryLower) {
+                            isPrimary = true;
+                            matchedFieldsFound.push(`${propertyLabels[metricKey] || metricKey}: ${elementNodeData[metricKey]}`);
+                        } else if (!isNaN(queryRaw) && !isNaN(targetAttributeValue) && Number(targetAttributeValue) === Number(queryRaw)) {
+                            isPrimary = true;
+                            matchedFieldsFound.push(`${propertyLabels[metricKey] || metricKey}: ${elementNodeData[metricKey]}`);
+                        } else if (targetAttributeValue.includes(queryLower) && isNaN(queryRaw)) {
+                            isSecondary = true;
+                            matchedFieldsFound.push(`${propertyLabels[metricKey] || metricKey}: ${elementNodeData[metricKey]}`);
+                        }
+                    });
+                } else {
+                    if (!isNaN(queryRaw) && elementNodeData.num === Number(queryRaw)) {
+                        isPrimary = true;
+                        matchedFieldsFound.push(`Atomic Number Exact: ${elementNodeData.num}`);
+                    } else if (elementNodeData.symbol.toLowerCase() === queryLower) {
+                        isPrimary = true;
+                        matchedFieldsFound.push(`Symbol Exact: ${elementNodeData.symbol}`);
+                    } else if (elementNodeData.name.toLowerCase() === queryLower) {
+                        isPrimary = true;
+                        matchedFieldsFound.push(`Name Exact: ${elementNodeData.name}`);
+                    } else {
+                        Object.entries(elementNodeData).forEach(([key, val]) => {
+                            if (propertyLabels[key]) {
+                                const checkValStr = String(val).toLowerCase().trim();
+                                if (checkValStr === queryLower) {
+                                    isPrimary = true;
+                                    matchedFieldsFound.push(`${propertyLabels[key]} Exact: ${val}`);
+                                } else if (checkValStr.includes(queryLower) && isNaN(queryRaw)) {
+                                    isSecondary = true;
+                                    matchedFieldsFound.push(`${propertyLabels[key]} Match: ${val}`);
+                                }
+                            }
+                        });
+                    }
+                }
+
+                if (isPrimary || isSecondary) {
+                    if (matchedFieldsFound.length > 0) {
+                        const infoContainer = document.createElement('div');
+                        infoContainer.className = 'search-meta-row-info';
+                        infoContainer.style.cssText = "display: flex !important; flex-wrap: wrap !important; gap: 4px !important; white-space: normal !important; word-break: break-word !important;";
+                        
+                        matchedFieldsFound.forEach(txt => {
+                            const spanEl = document.createElement('span');
+                            spanEl.style.cssText = "white-space: normal !important; word-break: break-word !important; display: inline-block !important;";
+                            spanEl.innerText = txt;
+                            infoContainer.appendChild(spanEl);
+                        });
+                        cardDOM.appendChild(infoContainer);
+                    }
+
+                    if (isPrimary) {
+                        cardDOM.classList.add('search-match-primary');
+                        exactPrimaryMatches.push({ dom: cardDOM, originalNum: elementNodeData.num, score: 2 });
+                    } else {
+                        cardDOM.classList.add('search-match-secondary');
+                        partialSecondaryMatches.push({ dom: cardDOM, originalNum: elementNodeData.num, score: 1 });
+                    }
+                } else {
+                    cardDOM.classList.add('node-dimmed-state');
+                }
+            });
+
+            if (queryRaw.length > 0) {
+                // Modifies the view area into a single vertical linear display row list
+                matrixContainer.classList.add('active-search-list-view');
+
+                const allMatches = [...exactPrimaryMatches, ...partialSecondaryMatches];
+                const totalMatches = allMatches.length;
+
+                // --- EMPTY STATE CONTROLLER TRIGGER ---
+                if (totalMatches === 0) {
+                    const noResultsBanner = document.createElement('div');
+                    noResultsBanner.id = 'search-empty-state-banner';
+                    noResultsBanner.style.cssText = "color: #ff4a4a; padding: 24px; text-align: center; font-weight: bold; width: 100%; box-sizing: border-box; font-size: 1rem; clear: both;";
+                    noResultsBanner.textContent = `No results found for "${queryRaw}" matching current filter rules.`;
+                    matrixContainer.appendChild(noResultsBanner);
+                    return;
+                }
+
+                // Slice down sequence to top 5 initial visible slots
+                let visibleSequence = allMatches;
+                if (!isSearchExpandedShowAll && totalMatches > 5) {
+                    visibleSequence = allMatches.slice(0, 5);
+                }
+
+                // Apply correct linear block vertical ordering configurations
+                allMatches.forEach((item, idx) => {
+                    item.dom.style.order = idx;
+                    item.dom.style.gridRow = 'auto';
+                    item.dom.style.gridColumn = 'auto';
+                    
+                    if (!isSearchExpandedShowAll && idx >= 5) {
+                        item.dom.classList.add('node-dimmed-state');
+                    } else {
+                        item.dom.classList.remove('node-dimmed-state');
+                    }
+                });
+
+                // Re-append to cleanly order items down the singular vertical workflow channel
+                allMatches.forEach(item => matrixContainer.appendChild(item.dom));
+
+                // High-Tech Pagination Controller Assembly
+                if (!isSearchExpandedShowAll && totalMatches > 5) {
+                    const toggleContainer = document.createElement('div');
+                    toggleContainer.className = 'search-show-all-container';
+                    toggleContainer.id = 'dynamic-search-toggle-box';
+                    toggleContainer.style.cssText = "width: 100%; display: flex; justify-content: center; padding: 12px 0;";
+
+                    const actionBtn = document.createElement('button');
+                    actionBtn.type = 'button';
+                    actionBtn.className = 'search-show-all-btn';
+                    actionBtn.style.cssText = "min-height: 44px; padding: 10px 32px; font-weight: bold; cursor: pointer; border-radius: 4px;";
+                    actionBtn.innerText = `Show All Results (${totalMatches} matches found)`;
+                    
+                    const triggerExpansion = () => {
+                        isSearchExpandedShowAll = true;
+                        handleGlobalSearchFilter();
+                    };
+                    actionBtn.addEventListener('click', triggerExpansion);
+                    actionBtn.addEventListener('touchend', (e) => {
+                        e.preventDefault();
+                        triggerExpansion();
+                    }, { passive: false });
+
+                    toggleContainer.appendChild(actionBtn);
+                    matrixContainer.after(toggleContainer);
+                }
+            } else {
+                // Clear active list classes and restore coordinates if query is cleared
+                isSearchExpandedShowAll = false;
+                matrixContainer.classList.remove('active-search-list-view');
+                
+                const nativelyOrderedNodesArray = Array.from(matrixContainer.children)
+                    .filter(node => node.id.startsWith('matrix-node-element-'))
+                    .sort((x, y) => {
+                        const numX = parseInt(x.id.replace('matrix-node-element-', '')) || 0;
+                        const numY = parseInt(y.id.replace('matrix-node-element-', '')) || 0;
+                        return numX - numY;
+                    });
+
+                nativelyOrderedNodesArray.forEach(item => {
+                    const itemNum = parseInt(item.id.replace('matrix-node-element-', ''));
+                    const coord = standardIupacCoordinatesMap[itemNum];
+                    if (coord) {
+                        item.style.gridRow = coord.r;
+                        item.style.gridColumn = coord.c;
+                    }
+                    matrixContainer.appendChild(item);
+                });
+            }
+        }
+        
+        
+        
+        
+        
+        function handleUnifiedSelectionSwap() {
+            const chosenSelections = getActiveCheckboxFilterValues();
+            const displayLabelNode = document.getElementById('dropdown-selected-text');
+            
+            if (displayLabelNode) {
+                if (chosenSelections.length === 0) {
+                    displayLabelNode.innerText = "Filter: None";
+                } else if (chosenSelections.length === 1) {
+                    displayLabelNode.innerText = `Filter: ${chosenSelections[0]}`;
+                } else {
+                    displayLabelNode.innerText = `Filters: ${chosenSelections.join(', ')}`;
+                }
+            }
+            
+            handleGlobalSearchFilter();
+        }
+
+        // --- SYSTEM PROPERTY INSPECTOR RENDERING ---
+        function executePropertyInspection(elementNodeData) {
+            currentSelectedElementNum = elementNodeData.num;
+            
+            elements.forEach(el => {
+                const cardDOMNode = document.getElementById(`matrix-node-element-${el.num}`);
+                if(cardDOMNode) {
+                    if(el.num === elementNodeData.num) {
+                        cardDOMNode.classList.add('selected-active');
+                    } else {
+                        cardDOMNode.classList.remove('selected-active');
+                    }
+                }
+            });
+
+            const visualizerContainerNode = document.getElementById('inspector-viewport-root');
+            
+            const scientificUnitAffixDefinitionsMap = {
+                melting: " K",
+                boiling: " K",
+                radius: " pm",
+                ionization: " kJ/mol",
+                density: elementNodeData.state === "Gas" ? " g/L" : " g/cm³"
+            };
+
+            const innerInspectionGridHTML = Object.entries(elementNodeData).map(([attributeKey, rawAttributeValue]) => {
+                let formattedOutputString = rawAttributeValue;
+                
+                if (rawAttributeValue === 0 || rawAttributeValue === "0" || rawAttributeValue === "") {
+                    if (attributeKey === "year") formattedOutputString = "Prehistoric Era";
+                    else if (['electronegativity', 'melting', 'boiling', 'density'].includes(attributeKey)) {
+                        formattedOutputString = "Theoretical Variant";
+                    }
+                }
+
+                if (scientificUnitAffixDefinitionsMap[attributeKey] && !String(formattedOutputString).includes("Theoretical")) {
+                    formattedOutputString += scientificUnitAffixDefinitionsMap[attributeKey];
+                }
+
+                const calculationSpanConditionClass = ['orbital', 'discoverer', 'bohr', 'type'].includes(attributeKey) ? 'span-full-width' : '';
+
+                return `
+                    <div class="property-variable-tile ${calculationSpanConditionClass}">
+                        <label style="white-space: normal; word-break: break-word;">${attributeKey.replace(/_/g, ' ')}</label>
+                        <span style="white-space: normal; word-break: break-word; overflow: visible;">${formattedOutputString}</span>
+                    </div>
+                `;
+            }).join('');
+
+            visualizerContainerNode.innerHTML = `
+                <div class="inspector-hero-banner">
+                    <div class="inspector-hero-title">
+                        <h2 style="white-space: normal; word-break: break-word;">${elementNodeData.name}</h2>
+                        <p style="white-space: normal; word-break: break-word;">${elementNodeData.type} | ${elementNodeData.state}</p>
+                    </div>
+                    <div class="inspector-hero-glyph">${elementNodeData.symbol}</div>
+                </div>
+                <div class="property-variable-grid">
+                    ${innerInspectionGridHTML}
+                </div>
+            `;
+        }
+
+        // --- TARGETED QUIZ ENGINE IMPLEMENTATION ---
+        const quizEvaluationRegistryMatrix = [
+            { questionTemplate: "Identify the standard ground-state quantum electron configuration ([Orbital Notation]) that maps perfectly to: ", dataMappingKey: "orbital" },
+            { questionTemplate: "Determine the baseline Bohr Model structural electron shell layout sequence grouping ('n1, n2, n3, n4...') for: ", dataMappingKey: "bohr" },
+            { questionTemplate: "Determine the primary historical discoverer, pioneer, or lab institution accredited with extracting: ", dataMappingKey: "discoverer" },
+            { questionTemplate: "State the primary material structural matter classification type matching: ", dataMappingKey: "type" },
+            { questionTemplate: "Identify the specific outer outer-shell valence orbital Block orientation parameter ('s', 'p', 'd', 'f') matching: ", dataMappingKey: "block" },
+            { questionTemplate: "Identify the core outer boundary total valence electron capacity volume count matching: ", dataMappingKey: "valence" },
+            { questionTemplate: "State the precise periodic vertical Group identity location column number assigned to: ", dataMappingKey: "group" },
+            { questionTemplate: "Identify the standard baseline thermodynamic state of matter at standard ambient room temperature (298K): ", dataMappingKey: "state" },
+            { questionTemplate: "Identify the exact baseline horizontal Period orbital shell count matrix line index location matching: ", dataMappingKey: "period" }
+        ];
+
+        function shuffleArrayDataSequence(targetArraySource) {
+            let contextArrayPlaceholder = [...targetArraySource];
+            for (let operationalPointerIndex = contextArrayPlaceholder.length - 1; operationalPointerIndex > 0; operationalPointerIndex--) {
+                const randomlySelectedTargetOffset = Math.floor(Math.random() * (operationalPointerIndex + 1));
+                const temporalElementValueHolder = contextArrayPlaceholder[operationalPointerIndex];
+                contextArrayPlaceholder[operationalPointerIndex] = contextArrayPlaceholder[randomlySelectedTargetOffset];
+                contextArrayPlaceholder[randomlySelectedTargetOffset] = temporalElementValueHolder;
+            }
+            return contextArrayPlaceholder;
+        }
+
+        function generateNextQuizQuestion() {
+            document.getElementById('quiz-generation-action-trigger').style.display = "none";
+            document.getElementById('quiz-explanation-hub').style.display = "none";
+            
+            const choiceParentLayoutNode = document.getElementById('quiz-options-container-root');
+            choiceParentLayoutNode.innerHTML = '';
+
+            const selectedGroupFilter = document.getElementById('quiz-filter-type').value;
+            const selectedTopicFilter = document.getElementById('quiz-filter-topic').value;
+
+            let subsetElementsPool = elements;
+            if (selectedGroupFilter !== "ALL" && selectedGroupFilter !== "Filter: None") {
+                subsetElementsPool = elements.filter(el => String(el.type).toLowerCase().includes(selectedGroupFilter.toLowerCase()));
+            }
+
+            if (subsetElementsPool.length === 0) {
+                document.getElementById('quiz-question-viewport').innerText = "No elements fit your custom layout filters. Relax constraints to reinitialize.";
+                document.getElementById('quiz-generation-action-trigger').style.display = "block";
+                return;
+            }
+
+            activeQuizElementTarget = subsetElementsPool[Math.floor(Math.random() * subsetElementsPool.length)];
+            
+            let targetSchemas = quizEvaluationRegistryMatrix;
+            if (selectedTopicFilter !== "ALL" && selectedTopicFilter !== "Filter: None") {
+                targetSchemas = quizEvaluationRegistryMatrix.filter(schema => schema.dataMappingKey === selectedTopicFilter);
+            }
+            
+            const chosenQuerySchemaType = targetSchemas[Math.floor(Math.random() * targetSchemas.length)];
+            activeQuizTopicKey = chosenQuerySchemaType.dataMappingKey;
+            activeQuizCorrectAnswerString = String(activeQuizElementTarget[activeQuizTopicKey]).trim();
+
+            document.getElementById('quiz-question-viewport').innerHTML = `${chosenQuerySchemaType.questionTemplate} <strong>${activeQuizElementTarget.name} (${activeQuizElementTarget.symbol})</strong>`;
+
+            const hintContainer = document.getElementById('quiz-hint-container');
+            const hintContent = document.getElementById('hint-content-text');
+            hintContent.classList.remove('visible');
+            hintContainer.style.display = "block";
+            hintContent.innerHTML = `<strong>Diagnostic Hint:</strong> ${activeQuizElementTarget.name} is atomic index number ${activeQuizElementTarget.num} located inside Period ${activeQuizElementTarget.period}, Group ${activeQuizElementTarget.group || 'N/A'} of the database. It belongs to the ${activeQuizElementTarget.type} spectrum block.`;
+
+            let aggregateOptionsSetTracker = new Set();
+            aggregateOptionsSetTracker.add(activeQuizCorrectAnswerString);
+
+            let safeIterationTimeoutEscapeCounter = 0;
+            while (aggregateOptionsSetTracker.size < 4 && safeIterationTimeoutEscapeCounter < 600) {
+                const alternativeRandomSampleElement = elements[Math.floor(Math.random() * elements.length)];
+                const placeholderValueString = String(alternativeRandomSampleElement[activeQuizTopicKey]).trim();
+                
+                if (placeholderValueString && placeholderValueString !== "undefined" && placeholderValueString !== "0" && placeholderValueString !== "") {
+                    aggregateOptionsSetTracker.add(placeholderValueString);
+                }
+                safeIterationTimeoutEscapeCounter++;
+            }
+
+            if (aggregateOptionsSetTracker.size < 4) {
+                aggregateOptionsSetTracker.add("Synthetic Variant Parameter Block");
+                aggregateOptionsSetTracker.add("Theoretical Quantity Shift Trace");
+            }
+
+            const randomizedFinalArrayOptions = shuffleArrayDataSequence(Array.from(aggregateOptionsSetTracker));
+
+            randomizedFinalArrayOptions.forEach(choiceTextString => {
+                const choiceDOMButtonElement = document.createElement('button');
+                choiceDOMButtonElement.className = 'quiz-option-button';
+                choiceDOMButtonElement.innerText = choiceTextString;
+                choiceDOMButtonElement.addEventListener('click', function() {
+                    verifyUserQuizSelection(choiceDOMButtonElement, choiceTextString, randomizedFinalArrayOptions);
+                });
+                choiceParentLayoutNode.appendChild(choiceDOMButtonElement);
+            });
+        }
+
+        function verifyUserQuizSelection(clickedDOMButtonReference, userSelectedTextValueString, optionsArray) {
+            runtimeQuizTotalAccumulator++;
+            const processingOptionsRootNode = document.getElementById('quiz-options-container-root');
+            const totalActiveOptionButtons = processingOptionsRootNode.querySelectorAll('.quiz-option-button');
+            totalActiveOptionButtons.forEach(btnNode => btnNode.disabled = true);
+
+            const checkStateIsCorrect = (userSelectedTextValueString === activeQuizCorrectAnswerString);
+
+            if (checkStateIsCorrect) {
+                runtimeQuizCorrectAccumulator++;
+                runtimeQuizStreakAccumulator++;
+                clickedDOMButtonReference.classList.add('correct-answer');
+            } else {
+                runtimeQuizStreakAccumulator = 0;
+                clickedDOMButtonReference.classList.add('wrong-answer');
+                totalActiveOptionButtons.forEach(btnNode => {
+                    if (btnNode.innerText === activeQuizCorrectAnswerString) {
+                        btnNode.classList.add('correct-answer');
+                    }
+                });
+            }
+
+            document.getElementById('quiz-score-correct-counter').innerText = runtimeQuizCorrectAccumulator;
+            document.getElementById('quiz-score-total-counter').innerText = runtimeQuizTotalAccumulator;
+            document.getElementById('quiz-streak-display').innerText = `Streak: ${runtimeQuizStreakAccumulator}`;
+
+            const explanationHub = document.getElementById('quiz-explanation-hub');
+            const explanationContent = document.getElementById('explanation-content-area');
+            explanationHub.style.display = "block";
+
+            let dynamicAnalysisHTML = `<p class="verdict-banner ${checkStateIsCorrect ? 'pass' : 'fail'}"><strong>${checkStateIsCorrect ? 'Verification Successful!' : 'Verification Deviation Logged.'}</strong></p>`;
+            dynamicAnalysisHTML += `<p><strong>Core Rationale:</strong> The targeted element parameter matching <em>${activeQuizElementTarget.name} (${activeQuizElementTarget.symbol})</em> for <strong>${activeQuizTopicKey.toUpperCase()}</strong> is strictly assigned as <strong>"${activeQuizCorrectAnswerString}"</strong> inside standard configuration maps. This properties configuration is locked by its position on row ${activeQuizElementTarget.period} and column ${activeQuizElementTarget.group || 'N/A'}.</p>`;
+            
+            dynamicAnalysisHTML += `<div class="options-explanation-breakdown"><h5>Option Breakdown Parameters:</h5><ul>`;
+            optionsArray.forEach(option => {
+                if(option === activeQuizCorrectAnswerString) {
+                    dynamicAnalysisHTML += `<li><span class="lbl-ok">CORRECT:</span> <strong>"${option}"</strong> is the accurate baseline structural parameter configuration for this node mapping.</li>`;
+                } else {
+                    dynamicAnalysisHTML += `<li><span class="lbl-err">INCORRECT:</span> <strong>"${option}"</strong> maps to a distinct elemental shell state elsewhere in the data arrays and does not align with the properties profile of ${activeQuizElementTarget.symbol}.</li>`;
+                }
+            });
+            dynamicAnalysisHTML += `</ul></div>`;
+
+            explanationContent.innerHTML = dynamicAnalysisHTML;
+
+            const standardNextQuestionTriggerBtn = document.getElementById('quiz-generation-action-trigger');
+            standardNextQuestionTriggerBtn.innerText = "Load Next Evaluation Question";
+            standardNextQuestionTriggerBtn.style.display = "block";
+        }
+
+        // PROGRAMMATIC DROPDOWN FILTER EXTRACTION
+        function filterDropdownOptions(dropdownId, searchString) {
+            const selectElement = document.getElementById(dropdownId);
+            const cleanQuery = searchString.toLowerCase().trim();
+            const optionNodes = selectElement.options;
+            let firstMatch = null;
+
+            for (let i = 0; i < optionNodes.length; i++) {
+                const text = optionNodes[i].text.toLowerCase();
+                const val = optionNodes[i].value.toLowerCase();
+                
+                if (val === "all" || text.includes(cleanQuery) || val.includes(cleanQuery) || val === "filter: none") {
+                    optionNodes[i].style.display = "block";
+                    if (!firstMatch && cleanQuery !== "" && val !== "all" && val !== "filter: none") firstMatch = optionNodes[i];
+                } else {
+                    optionNodes[i].style.display = "none";
+                }
+            }
+            if (firstMatch) {
+                selectElement.value = firstMatch.value;
+                handleGlobalSearchFilter();
+            }
+        }
+
+        // --- DOM CONTENT INITIALIZATION WITH COMPLIANT NON-INLINE DECLARATIVE LISTENERS ---
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(bootstrapPeriodicEngine, 50);
+            
+            const searchBarElement = document.getElementById('engine-search-bar');
+            if (searchBarElement) {
+                searchBarElement.addEventListener('input', () => {
+                    isSearchExpandedShowAll = false;
+                    handleGlobalSearchFilter();
+                });
+            }
+
+            // Custom Dropdown Open/Close UI Interactions
+            const dropdownRoot = document.getElementById('custom-filter-dropdown-root');
+            const dropdownTrigger = document.getElementById('dropdown-display-trigger');
+            
+            if (dropdownTrigger && dropdownRoot) {
+                const toggleDropdown = (e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    dropdownRoot.classList.toggle('is-open');
+                };
+                dropdownTrigger.addEventListener('click', toggleDropdown);
+                dropdownTrigger.addEventListener('touchend', toggleDropdown);
+
+                document.addEventListener('click', (e) => {
+                    if (!dropdownRoot.contains(e.target)) {
+                        dropdownRoot.classList.remove('is-open');
+                    }
+                });
+                document.addEventListener('touchend', (e) => {
+                    if (!dropdownRoot.contains(e.target) && e.target !== dropdownTrigger) {
+                        dropdownRoot.classList.remove('is-open');
+                    }
+                }, { passive: true });
+            }
+
+            // Bind checkboxes to live matrix transformations
+            document.querySelectorAll('#custom-filter-dropdown-root .filter-checkbox').forEach(box => {
+                box.addEventListener('change', handleUnifiedSelectionSwap);
+            });
+            
+            // Evaluation Sync Select Boxes
+            const targetTypeElement = document.getElementById('quiz-filter-type');
+            if (targetTypeElement) {
+                targetTypeElement.addEventListener('change', handleGlobalSearchFilter);
+            }
+            const targetTopicElement = document.getElementById('quiz-filter-topic');
+            if (targetTopicElement) {
+                targetTopicElement.addEventListener('change', handleGlobalSearchFilter);
+            }
+
+            // Dropdown Live Filter Text Input Boxes
+            const categorySearchBox = document.getElementById('quiz-filter-type-search');
+            if (categorySearchBox) {
+                categorySearchBox.addEventListener('input', (e) => {
+                    filterDropdownOptions('quiz-filter-type', e.target.value);
+                });
+            }
+            const topicSearchBox = document.getElementById('quiz-filter-topic-search');
+            if (topicSearchBox) {
+                topicSearchBox.addEventListener('input', (e) => {
+                    filterDropdownOptions('quiz-filter-topic', e.target.value);
+                });
+            }
+
+            // Structural Quiz Component Action Activators
+            const quizTriggerBtn = document.getElementById('quiz-generation-action-trigger');
+            if (quizTriggerBtn) {
+                quizTriggerBtn.addEventListener('click', generateNextQuizQuestion);
+            }
+            const hintToggleBtn = document.getElementById('quiz-hint-toggle-btn');
+            if (hintToggleBtn) {
+                hintToggleBtn.addEventListener('click', () => {
+                    document.getElementById('hint-content-text').classList.toggle('visible');
+                });
+            }
+        });    
+    </script>
+</body>
+</html>
