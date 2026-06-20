@@ -5588,7 +5588,8 @@ const technetiumData = {
   electrophilicityIndex: null,
   polarizability: 11.4, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.40, // V (For TcO4- + 4H+ + 3e- -> TcO2 + 2H2O)
-  flameTestColor: "N/A (Radioactive, unsafe for regular flame spectroscopy testing)"
+  flameTestColor: "N/A (Radioactive, unsafe for regular flame spectroscopy testing)",
+  
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 4, // n = 4 for the 4d subshell
@@ -5862,7 +5863,7 @@ const rhodiumData = {
   electrophilicityIndex: 1.91,
   polarizability: 8.6, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.76, // V (For Rh3+ + 3e- -> Rh)
-  flameTestColor: "N/A (Refractory noble metal; does not display a simple solution flame signature)"
+  flameTestColor: "N/A (Refractory noble metal; does not display a simple solution flame signature)",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 4, // n = 4 for the 4d block
@@ -6133,7 +6134,7 @@ const silverData = {
   electrophilicityIndex: 1.71,
   polarizability: 7.9, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.80, // V (For Ag+ + e- -> Ag; noble metal reduction benchmark)
-  flameTestColor: "N/A (Does not yield a simple atomic solution flame color profile; can impart a faint yellowish-white tint under strong excitation arc parameters)"
+  flameTestColor: "N/A (Does not yield a simple atomic solution flame color profile; can impart a faint yellowish-white tint under strong excitation arc parameters)",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 5, // n = 5 for the single outer 5s valence electron
@@ -6267,7 +6268,7 @@ const cadmiumData = {
   electrophilicityIndex: 0.24,
   polarizability: 8.0, // × 10⁻²⁴ cm³
   standardReductionPotential: -0.40, // V (For Cd2+ + 2e- -> Cd)
-  flameTestColor: "Faint yellowish-green to blue emission line configurations"
+  flameTestColor: "Faint yellowish-green to blue emission line configurations",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 5, // n = 5 for the 5s outer valence tier
@@ -6407,7 +6408,7 @@ const indiumData = {
   electrophilicityIndex: 0.46,
   polarizability: 10.2, // × 10⁻²⁴ cm³
   standardReductionPotential: -0.34, // V (For In3+ + 3e- -> In)
-  flameTestColor: "Brilliant Indigo / Violet-Blue"
+  flameTestColor: "Brilliant Indigo / Violet-Blue",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 5, // n = 5 for the 5p outer valence electron
@@ -6541,7 +6542,7 @@ const tinData = {
   electrophilicityIndex: 1.83,
   polarizability: 7.7, // × 10⁻²⁴ cm³
   standardReductionPotential: -0.14, // V (For Sn2+ + 2e- -> Sn)
-  flameTestColor: "Faint blue-white or soft grey emission spectrum lines"
+  flameTestColor: "Faint blue-white or soft grey emission spectrum lines",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 5, // n = 5 for the 5p outer block valence valence configuration
@@ -6683,7 +6684,7 @@ const antimonyData = {
   electrophilicityIndex: 1.85,
   polarizability: 6.6, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.15, // V (For Sb2O3 + 6H+ + 6e- -> 2Sb + 3H2O)
-  flameTestColor: "Pale blue / faint greenish-white emission tint profile"
+  flameTestColor: "Pale blue / faint greenish-white emission tint profile",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 5, // n = 5 for the 5p outer valence configuration
@@ -6817,7 +6818,7 @@ const telluriumData = {
   electrophilicityIndex: 3.10,
   polarizability: 5.5, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.57, // V (For TeO2 + 4H+ + 4e- -> Te + 2H2O)
-  flameTestColor: "Greenish-blue execution profile signature"
+  flameTestColor: "Greenish-blue execution profile signature",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 5, // n = 5 for the 5p outer tier
@@ -6957,7 +6958,7 @@ const iodineData = {
   electrophilicityIndex: 5.91,
   polarizability: 5.4, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.54, // V (For I2 + 2e- -> 2I-)
-  flameTestColor: "Produces a distinct deep violet-purple gas excitation signature glow"
+  flameTestColor: "Produces a distinct deep violet-purple gas excitation signature glow",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 5, // n = 5 for the 5p outer tier valence shell
@@ -7090,7 +7091,7 @@ const xenonData = {
   electrophilicityIndex: null,
   polarizability: 4.0, // × 10⁻²⁴ cm³ (Highly polarizable for a noble gas, facilitating rich coordination chemistry)
   standardReductionPotential: 2.12, // V (For powers of XeO3 + 6H+ + 6e- -> Xe + 3H2O in acidic settings)
-  flameTestColor: "Produces a brilliant, piercing sky-blue to bright violet electrical plasma arc discharge spectrum signature"
+  flameTestColor: "Produces a brilliant, piercing sky-blue to bright violet electrical plasma arc discharge spectrum signature",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 5, // n = 5 for the completely filled 5p outer tier shell
@@ -7231,7 +7232,7 @@ const cesiumData = {
   electrophilicityIndex: 0.54,
   polarizability: 59.6, // × 10⁻²⁴ cm³ (Exceptionally high; valence electron cloud is easily warped)
   standardReductionPotential: -3.02, // V (For Cs+ + e- -> Cs)
-  flameTestColor: "Brilliant, distinct sky-blue / violet line emissions"
+  flameTestColor: "Brilliant, distinct sky-blue / violet line emissions",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6, // n = 6 for the 6s outermost single valence electron
@@ -7364,7 +7365,7 @@ const bariumData = {
   electrophilicityIndex: 0.05,
   polarizability: 39.7, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.91, // V (For Ba2+ + 2e- -> Ba)
-  flameTestColor: "Vivid Apple Green emission signature profile"
+  flameTestColor: "Vivid Apple Green emission signature profile",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6, // n = 6 for the 6s outermost valence subshell
@@ -7503,7 +7504,7 @@ const lanthanumData = {
   electrophilicityIndex: 0.11,
   polarizability: 31.1, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.38, // V (For La3+ + 3e- -> La)
-  flameTestColor: "Faint white to pale greenish-yellow emissions"
+  flameTestColor: "Faint white to pale greenish-yellow emissions",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6, // n = 6 for the outermost 6s electrons
@@ -7637,7 +7638,7 @@ const ceriumData = {
   electrophilicityIndex: 0.14,
   polarizability: 29.6, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.34, // V (For Ce3+ + 3e- -> Ce; note that Ce4+ + e- -> Ce3+ is highly oxidizing at +1.61 V)
-  flameTestColor: "Sparking yellow-white incandescent thermal emission lines"
+  flameTestColor: "Sparking yellow-white incandescent thermal emission lines",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -7773,7 +7774,7 @@ const praseodymiumData = {
   electrophilicityIndex: 0.12,
   polarizability: 28.2, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.35, // V (For Pr3+ + 3e- -> Pr)
-  flameTestColor: "Pale yellow-green incandescent emissions"
+  flameTestColor: "Pale yellow-green incandescent emissions",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -7906,7 +7907,7 @@ const neodymiumData = {
   electrophilicityIndex: 0.13,
   polarizability: 26.9, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.32, // V (For Nd3+ + 3e- -> Nd)
-  flameTestColor: "Pale blue-white incandescent thermal emission tracking line profiles"
+  flameTestColor: "Pale blue-white incandescent thermal emission tracking line profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -8045,7 +8046,7 @@ const promethiumData = {
   electrophilicityIndex: 0.13,
   polarizability: 25.4, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.30, // V (For Pm3+ + 3e- -> Pm)
-  flameTestColor: "Pale blue-green radiant thermal emissions (Masked by extreme radiological concerns)"
+  flameTestColor: "Pale blue-green radiant thermal emissions (Masked by extreme radiological concerns)",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -8178,7 +8179,7 @@ const samariumData = {
   electrophilicityIndex: 0.13,
   polarizability: 24.8, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.30, // V (For Sm3+ + 3e- -> Sm; Sm3+ + e- -> Sm2+ is -1.55 V)
-  flameTestColor: "Pale yellow-green incandescent emission line traits"
+  flameTestColor: "Pale yellow-green incandescent emission line traits",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -8451,7 +8452,7 @@ const gadoliniumData = {
   electrophilicityIndex: 0.14,
   polarizability: 23.5, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.28, // V (For Gd3+ + 3e- -> Gd)
-  flameTestColor: "Pale white to faint yellow-green thermal emissions"
+  flameTestColor: "Pale white to faint yellow-green thermal emissions",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -8590,7 +8591,7 @@ const terbiumData = {
   electrophilicityIndex: 0.14,
   polarizability: 22.2, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.28, // V (For Tb3+ + 3e- -> Tb)
-  flameTestColor: "Vibrant, brilliant green line emissions"
+  flameTestColor: "Vibrant, brilliant green line emissions",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -8723,7 +8724,7 @@ const dysprosiumData = {
   electrophilicityIndex: 0.14,
   polarizability: 21.0, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.29, // V (For Dy3+ + 3e- -> Dy)
-  flameTestColor: "Pale yellowish incandescent emission profiles"
+  flameTestColor: "Pale yellowish incandescent emission profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -8862,7 +8863,7 @@ const holmiumData = {
   electrophilicityIndex: 0.14,
   polarizability: 20.0, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.33, // V (For Ho3+ + 3e- -> Ho)
-  flameTestColor: "Pale yellowish incandescent emission profiles"
+  flameTestColor: "Pale yellowish incandescent emission profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -8995,7 +8996,7 @@ const erbiumData = {
   electrophilicityIndex: 0.15,
   polarizability: 19.0, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.32, // V (For Er3+ + 3e- -> Er)
-  flameTestColor: "Pale pink to yellowish incandescent emission profiles"
+  flameTestColor: "Pale pink to yellowish incandescent emission profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -9133,7 +9134,7 @@ const thuliumData = {
   electrophilicityIndex: 0.15,
   polarizability: 18.1, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.28, // V (For Tm3+ + 3e- -> Tm)
-  flameTestColor: "Pale greenish incandescent emission profiles"
+  flameTestColor: "Pale greenish incandescent emission profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -9266,7 +9267,7 @@ const ytterbiumData = {
   electrophilicityIndex: 0.14,
   polarizability: 17.5, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.22, // V (For Yb3+ + 3e- -> Yb; Yb3+ + e- -> Yb2+ is -1.05 V)
-  flameTestColor: "Pale yellowish-green incandescent emission profiles"
+  flameTestColor: "Pale yellowish-green incandescent emission profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -9405,7 +9406,7 @@ const lutetiumData = {
   electrophilicityIndex: 0.16,
   polarizability: 16.5, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.28, // V (For Lu3+ + 3e- -> Lu)
-  flameTestColor: "Pure white incandescent emission profiles"
+  flameTestColor: "Pure white incandescent emission profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -9539,7 +9540,7 @@ const hafniumData = {
   electrophilicityIndex: 0.18,
   polarizability: 16.2, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.55, // V (For Hf4+ + 4e- -> Hf)
-  flameTestColor: "Bright white incandescent thermal light emission profiles"
+  flameTestColor: "Bright white incandescent thermal light emission profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -9677,7 +9678,7 @@ const tantalumData = {
   electrophilicityIndex: 0.22,
   polarizability: 13.1, // × 10⁻²⁴ cm³
   standardReductionPotential: -0.75, // V (For Ta2O5 + 10H+ + 10e- -> 2Ta + 5H2O)
-  flameTestColor: "Pale blue-white incandescent line traits"
+  flameTestColor: "Pale blue-white incandescent line traits",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -9811,7 +9812,7 @@ const tungstenData = {
   electrophilicityIndex: 0.86,
   polarizability: 11.1, // × 10⁻²⁴ cm³
   standardReductionPotential: -0.15, // V (For WO3 + 6H+ + 6e- -> W + 3H2O)
-  flameTestColor: "Bright, sparkling white to pale green incandescent thermal tracking emissions"
+  flameTestColor: "Bright, sparkling white to pale green incandescent thermal tracking emissions",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -9948,7 +9949,7 @@ const rheniumData = {
   electrophilicityIndex: 0.31,
   polarizability: 9.7, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.36, // V (For ReO4- + 4H+ + 3e- -> ReO2 + 2H2O)
-  flameTestColor: "Pale yellowish-green incandescent thermal line emissions"
+  flameTestColor: "Pale yellowish-green incandescent thermal line emissions",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -10082,7 +10083,7 @@ const osmiumData = {
   electrophilicityIndex: 0.45,
   polarizability: 8.5, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.85, // V (For Os2+ + 2e- -> Os)
-  flameTestColor: "Bright white-blue thermal light emission lines"
+  flameTestColor: "Bright white-blue thermal light emission lines",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -10221,7 +10222,7 @@ const iridiumData = {
   electrophilicityIndex: 0.52,
   polarizability: 7.6, // × 10⁻²⁴ cm³
   standardReductionPotential: 1.15, // V (For Ir3+ + 3e- -> Ir)
-  flameTestColor: "Faint white-blue line traits"
+  flameTestColor: "Faint white-blue line traits",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -10355,7 +10356,7 @@ const platinumData = {
   electrophilicityIndex: 0.55,
   polarizability: 6.5, // × 10⁻²⁴ cm³
   standardReductionPotential: 1.18, // V (For Pt2+ + 2e- -> Pt)
-  flameTestColor: "Faint white-gray thermal light emissions"
+  flameTestColor: "Faint white-gray thermal light emissions",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -10493,7 +10494,7 @@ const goldData = {
   electrophilicityIndex: 0.63,
   polarizability: 5.8, // × 10⁻²⁴ cm³
   standardReductionPotential: 1.40, // V (For Au3+ + 3e- -> Au)
-  flameTestColor: "Bright white to faint yellow-green incandescent thermal line profiles"
+  flameTestColor: "Bright white to faint yellow-green incandescent thermal line profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -10626,7 +10627,7 @@ const mercuryData = {
   electrophilicityIndex: 0.50,
   polarizability: 5.7, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.85, // V (For Hg2+ + 2e- -> Hg)
-  flameTestColor: "Pale blue-violet to greenish line spectra under electrical excitation"
+  flameTestColor: "Pale blue-violet to greenish line spectra under electrical excitation",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -10765,7 +10766,7 @@ const thalliumData = {
   electrophilicityIndex: 0.22,
   polarizability: 7.6, // × 10⁻²⁴ cm³
   standardReductionPotential: -0.34, // V (For Tl+ + e- -> Tl)
-  flameTestColor: "Intense, vivid green line spectral emission"
+  flameTestColor: "Intense, vivid green line spectral emission",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -10899,7 +10900,7 @@ const leadData = {
   electrophilicityIndex: 0.28,
   polarizability: 6.8, // × 10⁻²⁴ cm³
   standardReductionPotential: -0.13, // V (For Pb2+ + 2e- -> Pb)
-  flameTestColor: "Faint white-blue to dull gray incandescent light emissions"
+  flameTestColor: "Faint white-blue to dull gray incandescent light emissions",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -11035,7 +11036,7 @@ const bismuthData = {
   electrophilicityIndex: 0.38,
   polarizability: 7.4, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.32, // V (For Bi3+ + 3e- -> Bi)
-  flameTestColor: "Faint light-blue to whitish line incandescent emission profile"
+  flameTestColor: "Faint light-blue to whitish line incandescent emission profile",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -11168,7 +11169,7 @@ const poloniumData = {
   electrophilicityIndex: 0.58,
   polarizability: 8.0, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.76, // V (For Po4+ + 4e- -> Po)
-  flameTestColor: "Bright white-blue ionization profiles with no stable thermal flame spectrum"
+  flameTestColor: "Bright white-blue ionization profiles with no stable thermal flame spectrum",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -11302,7 +11303,7 @@ const astatineData = {
   electrophilicityIndex: 0.52,
   polarizability: 8.4, // × 10⁻²⁴ cm³
   standardReductionPotential: 0.3, // V (Estimated for At + e- -> At-)
-  flameTestColor: "Vaporizes immediately with intense ionization lines"
+  flameTestColor: "Vaporizes immediately with intense ionization lines",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -11436,7 +11437,7 @@ const radonData = {
   electrophilicityIndex: 0.44,
   polarizability: 6.0, // × 10⁻²⁴ cm³
   standardReductionPotential: null,
-  flameTestColor: "Bright phosphorescent glow under intense discharge tube ionization profiles"
+  flameTestColor: "Bright phosphorescent glow under intense discharge tube ionization profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 6,
@@ -11571,7 +11572,7 @@ const franciumData = {
   electrophilicityIndex: 0.32,
   polarizability: 48.0, // × 10⁻²⁴ cm³ (Extremely high electronic polarizability matrix)
   standardReductionPotential: -2.9, // V (Estimated for Fr+ + e- -> Fr)
-  flameTestColor: "Crimson-red line emission tracking profile (Predicted via spectroscopic modeling)"
+  flameTestColor: "Crimson-red line emission tracking profile (Predicted via spectroscopic modeling)",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -11705,7 +11706,7 @@ const radiumData = {
   electrophilicityIndex: 0.18,
   polarizability: 38.3, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.92, // V (For Ra2+ + 2e- -> Ra)
-  flameTestColor: "Pure, vibrant carmine-red to crimson incandescent thermal line profile"
+  flameTestColor: "Pure, vibrant carmine-red to crimson incandescent thermal line profile",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -11841,7 +11842,7 @@ const actiniumData = {
   electrophilicityIndex: 0.23,
   polarizability: 32.1, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.13, // V (For Ac3+ + 3e- -> Ac)
-  flameTestColor: "Bright white-blue incandescent light emissions with no stable visible thermal line spectra"
+  flameTestColor: "Bright white-blue incandescent light emissions with no stable visible thermal line spectra",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -11975,7 +11976,7 @@ const thoriumData = {
   electrophilicityIndex: 0.32,
   polarizability: 32.1, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.83, // V (For Th4+ + 4e- -> Th)
-  flameTestColor: "Bright white sparks with no baseline thermal line spectrum"
+  flameTestColor: "Bright white sparks with no baseline thermal line spectrum",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -12110,7 +12111,7 @@ const protactiniumData = {
   electrophilicityIndex: 0.40,
   polarizability: 24.3, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.49, // V (For Pa5+ + 5e- -> Pa)
-  flameTestColor: "Vaporizes with intense multi-line radioactive emission tracking traits"
+  flameTestColor: "Vaporizes with intense multi-line radioactive emission tracking traits",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -12244,7 +12245,7 @@ const uraniumData = {
   electrophilicityIndex: 0.35,
   polarizability: 21.6, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.66, // V (For U3+ + 3e- -> U)
-  flameTestColor: "Bright white-yellow thermal incandescence with massive multi-line spark arcs"
+  flameTestColor: "Bright white-yellow thermal incandescence with massive multi-line spark arcs",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -12379,7 +12380,7 @@ const neptuniumData = {
   electrophilicityIndex: 0.38,
   polarizability: 20.2, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.86, // V (For Np3+ + 3e- -> Np)
-  flameTestColor: "Vaporizes with intense, complex multi-line radioactive emission profiles"
+  flameTestColor: "Vaporizes with intense, complex multi-line radioactive emission profiles",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -12513,7 +12514,7 @@ const plutoniumData = {
   electrophilicityIndex: 0.42,
   polarizability: 19.4, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.03, // V (For Pu3+ + 3e- -> Pu)
-  flameTestColor: "Vaporizes with intense multi-line spark and deep radioactive glow patterns"
+  flameTestColor: "Vaporizes with intense multi-line spark and deep radioactive glow patterns",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -12648,7 +12649,7 @@ const americiumData = {
   electrophilicityIndex: 0.35,
   polarizability: 23.1, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.08, // V (For Am3+ + 3e- -> Am)
-  flameTestColor: "Vaporizes with a distinctive, intense yellowish-float emission under discharge excitation"
+  flameTestColor: "Vaporizes with a distinctive, intense yellowish-float emission under discharge excitation",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -12782,7 +12783,7 @@ const curiumData = {
   electrophilicityIndex: 0.34,
   polarizability: 22.3, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.06, // V (For Cm3+ + 3e- -> Cm)
-  flameTestColor: "Vaporizes with intense, multi-line radioactive line emissions under ionization fields"
+  flameTestColor: "Vaporizes with intense, multi-line radioactive line emissions under ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -12917,7 +12918,7 @@ const berkeliumData = {
   electrophilicityIndex: 0.36,
   polarizability: 21.1, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.01, // V (For Bk3+ + 3e- -> Bk)
-  flameTestColor: "Vaporizes with complex radioactive line emission profiles under intense discharge fields"
+  flameTestColor: "Vaporizes with complex radioactive line emission profiles under intense discharge fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -13051,7 +13052,7 @@ const californiumData = {
   electrophilicityIndex: 0.37,
   polarizability: 20.5, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.94, // V (For Cf3+ + 3e- -> Cf)
-  flameTestColor: "Vaporizes with complex, multi-line radioactive spark emission tracking lines"
+  flameTestColor: "Vaporizes with complex, multi-line radioactive spark emission tracking lines",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -13186,7 +13187,7 @@ const einsteiniumData = {
   electrophilicityIndex: 0.38,
   polarizability: 19.8, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.98, // V (For Es3+ + 3e- -> Es)
-  flameTestColor: "Vaporizes immediately with complex radioactive spark line structures"
+  flameTestColor: "Vaporizes immediately with complex radioactive spark line structures",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -13321,7 +13322,7 @@ const fermiumData = {
   electrophilicityIndex: 0.39,
   polarizability: 19.1, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.96, // V (For Fm3+ + 3e- -> Fm)
-  flameTestColor: "Vaporizes instantly with complex, hyper-unstable multi-line emission arcs"
+  flameTestColor: "Vaporizes instantly with complex, hyper-unstable multi-line emission arcs",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -13455,7 +13456,7 @@ const mendeleviumData = {
   electrophilicityIndex: 0.40,
   polarizability: 18.6, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.74, // V (For Md3+ + 3e- -> Md)
-  flameTestColor: "Vaporizes with intense multi-line spark emission profiles under high energy fields"
+  flameTestColor: "Vaporizes with intense multi-line spark emission profiles under high energy fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -13589,7 +13590,7 @@ const nobeliumData = {
   electrophilicityIndex: 0.41,
   polarizability: 17.5, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.50, // V (For No2+ + 2e- -> No)
-  flameTestColor: "Vaporizes instantly with complex radioactive emission line tracking signatures"
+  flameTestColor: "Vaporizes instantly with complex radioactive emission line tracking signatures",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -13723,7 +13724,7 @@ const lawrenciumData = {
   electrophilicityIndex: 0.38,
   polarizability: 18.2, // × 10⁻²⁴ cm³
   standardReductionPotential: -1.96, // V (For Lr3+ + 3e- -> Lr)
-  flameTestColor: "Vaporizes instantly with intense, multi-line radioactive spark emission track patterns"
+  flameTestColor: "Vaporizes instantly with intense, multi-line radioactive spark emission track patterns",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -13858,7 +13859,7 @@ const rutherfordiumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes with complex radioactive spark line structures under ionization"
+  flameTestColor: "Vaporizes with complex radioactive spark line structures under ionization",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -13992,7 +13993,7 @@ const dubniumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -14126,7 +14127,7 @@ const seaborgiumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -14260,7 +14261,7 @@ const bohriumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -14394,7 +14395,7 @@ const hassiumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -14528,7 +14529,7 @@ const meitneriumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -14662,7 +14663,7 @@ const darmstadtiumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -14796,7 +14797,7 @@ const roentgeniumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -14930,7 +14931,7 @@ const coperniciumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -15064,7 +15065,7 @@ const nihoniumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -15198,7 +15199,7 @@ const fleroviumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -15332,7 +15333,7 @@ const moscoviumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -15466,7 +15467,7 @@ const livermoriumData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -15600,7 +15601,7 @@ const tennessineData = {
   electrophilicityIndex: null,
   polarizability: null,
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
@@ -15734,7 +15735,7 @@ const oganessonData = {
   electrophilicityIndex: null,
   polarizability: null, // Exceptionally high polarizability due to the loosely bound outer $7p_{3/2}$ electron cloud
   standardReductionPotential: null,
-  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields"
+  flameTestColor: "Vaporizes immediately with complex radioactive line structures under intense ionization fields",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 7,
