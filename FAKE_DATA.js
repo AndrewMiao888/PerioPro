@@ -1573,7 +1573,7 @@ const aluminiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Neon burning process and Magnesium-proton capture in stars"
 };
-next
+
 
   
  
