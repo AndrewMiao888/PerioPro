@@ -5046,7 +5046,7 @@ const yttriumData = {
   electrophilicityIndex: 0.44,
   polarizability: 22.7, // × 10⁻²⁴ cm³
   standardReductionPotential: -2.38, // V (For Y3+ + 3e- -> Y)
-  flameTestColor: "N/A (Sparkles cleanly without producing a highly distinctive classic atomic solution flame color profile)"
+  flameTestColor: "N/A (Sparkles cleanly without producing a highly distinctive classic atomic solution flame color profile)",
 
   // 6. Quantum Mechanical Variables
   principalQuantumNumber: 4, // n = 4 for the 4d valence tier
