@@ -1,5 +1,3 @@
-
-// data.js
 const hydrogenData = {
   // 1. Fundamental Identity & Classification
   num: 1,
@@ -132,9 +130,6 @@ const hydrogenData = {
   nucleosynthesisPathway: "Big Bang nucleosynthesis"
 };
 
-
-JavaScript
-// data.js
 const heliumData = {
   // 1. Fundamental Identity & Classification
   num: 2,
@@ -265,10 +260,7 @@ const heliumData = {
   goldschmidtClassification: "Atmophile",
   nucleosynthesisPathway: "Big Bang nucleosynthesis and Stellar hydrogen fusion (pp-chain)"
 };
-lithium next all variables
 
-JavaScript
-// data.js
 const lithiumData = {
   // 1. Fundamental Identity & Classification
   num: 3,
@@ -400,8 +392,8 @@ const lithiumData = {
   nucleosynthesisPathway: "Big Bang nucleosynthesis and Cosmic ray spallation"
 };
 
-JavaScript
-// data.js
+  
+ 
 const boronData = {
   // 1. Fundamental Identity & Classification
   num: 5,
@@ -532,10 +524,7 @@ const boronData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Cosmic ray spallation"
 };
-next one all variables
 
-JavaScript
-// data.js
 const carbonData = {
   // 1. Fundamental Identity & Classification
   num: 6,
@@ -667,10 +656,7 @@ const carbonData = {
   goldschmidtClassification: "Lithophile / Atmophile",
   nucleosynthesisPathway: "Stellar helium burning via the Triple-alpha process"
 };
-next one all variables
 
-JavaScript
-// data.js
 const nitrogenData = {
   // 1. Fundamental Identity & Classification
   num: 7,
@@ -801,10 +787,7 @@ const nitrogenData = {
   goldschmidtClassification: "Atmophile",
   nucleosynthesisPathway: "CNO cycle in intermediate and massive stars"
 };
-next one all variables
 
-JavaScript
-// data.js
 const oxygenData = {
   // 1. Fundamental Identity & Classification
   num: 8,
@@ -936,10 +919,7 @@ const oxygenData = {
   goldschmidtClassification: "Lithophile / Atmophile",
   nucleosynthesisPathway: "Stellar helium burning via Alpha process and CNO cycle"
 };
-next one all variables
 
-JavaScript
-// data.js
 const fluorineData = {
   // 1. Fundamental Identity & Classification
   num: 9,
@@ -1069,10 +1049,7 @@ const fluorineData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Asymptotic giant branch (AGB) stars and Type II supernovae"
 };
-next one all variables
 
-JavaScript
-// data.js
 const neonData = {
   // 1. Fundamental Identity & Classification
   num: 10,
@@ -1204,10 +1181,7 @@ const neonData = {
   goldschmidtClassification: "Atmophile",
   nucleosynthesisPathway: "Advanced stellar carbon burning process"
 };
-next one all variable
 
-JavaScript
-// data.js
 const sodiumData = {
   // 1. Fundamental Identity & Classification
   num: 11,
@@ -1337,10 +1311,7 @@ const sodiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Carbon burning process in massive stars"
 };
-next one all variables
 
-JavaScript
-// data.js
 const magnesiumData = {
   // 1. Fundamental Identity & Classification
   num: 12,
@@ -1472,10 +1443,7 @@ const magnesiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Carbon fusion process and Neon burning process in massive stars"
 };
-next one all variables
 
-JavaScript
-// data.js
 const aluminiumData = {
   // 1. Fundamental Identity & Classification
   num: 13,
@@ -1607,8 +1575,8 @@ const aluminiumData = {
 };
 next
 
-JavaScript
-// data.js
+  
+ 
 const siliconData = {
   // 1. Fundamental Identity & Classification
   num: 14,
@@ -1871,10 +1839,10 @@ const phosphorusData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Neon burning process in massive stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const sulfurData = {
   // 1. Fundamental Identity & Classification
   num: 16,
@@ -2007,10 +1975,10 @@ const sulfurData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Oxygen burning process and Silicon burning process in stars via the Alpha process"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const chlorineData = {
   // 1. Fundamental Identity & Classification
   num: 17,
@@ -2141,10 +2109,10 @@ const chlorineData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Oxygen burning process and Silicon burning process in massive stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const argonData = {
   // 1. Fundamental Identity & Classification
   num: 18,
@@ -2276,10 +2244,10 @@ const argonData = {
   goldschmidtClassification: "Atmophile",
   nucleosynthesisPathway: "Silicon burning process via Alpha process in massive stars (Ar-36); Potassium-40 electron capture / beta decay on Earth (Ar-40)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const potassiumData = {
   // 1. Fundamental Identity & Classification
   num: 19,
@@ -2411,10 +2379,10 @@ const potassiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Oxygen burning process and Silicon burning process inside supernovae explosions"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const calciumData = {
   // 1. Fundamental Identity & Classification
   num: 20,
@@ -2549,10 +2517,10 @@ const calciumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Silicon burning process via the Alpha process in massive stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const scandiumData = {
   // 1. Fundamental Identity & Classification
   num: 21,
@@ -2683,10 +2651,10 @@ const scandiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Supernova explosive oxygen burning and cosmic ray spallation matrix"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const titaniumData = {
   // 1. Fundamental Identity & Classification
   num: 22,
@@ -2820,10 +2788,10 @@ const titaniumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Silicon burning and explosive alpha processes inside type II supernovae"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const vanadiumData = {
   // 1. Fundamental Identity & Classification
   num: 23,
@@ -2954,10 +2922,10 @@ const vanadiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Silicon burning process and explosive supernova carbon detonation"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const chromiumData = {
   // 1. Fundamental Identity & Classification
   num: 24,
@@ -3090,10 +3058,10 @@ const chromiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Silicon burning process inside core-collapse massive stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const manganeseData = {
   // 1. Fundamental Identity & Classification
   num: 25,
@@ -3223,10 +3191,10 @@ const manganeseData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Silicon burning process right before iron-peak formation in supernova collapse events"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const ironData = {
   // 1. Fundamental Identity & Classification
   num: 26,
@@ -3359,10 +3327,10 @@ const ironData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Silicon burning process (the terminal endpoint of standard stellar exothermic fusion)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const cobaltData = {
   // 1. Fundamental Identity & Classification
   num: 27,
@@ -3492,10 +3460,10 @@ const cobaltData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Silicon burning and explosive iron-peak generation processes inside core-collapse supernovae"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const nickelData = {
   // 1. Fundamental Identity & Classification
   num: 28,
@@ -3629,10 +3597,10 @@ const nickelData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Silicon burning process inside core-collapse massive stars and Type Ia supernovae equilibria"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const copperData = {
   // 1. Fundamental Identity & Classification
   num: 29,
@@ -3763,10 +3731,10 @@ const copperData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Explosive explosive carbon/neon burning phases inside supernovae shell structures"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const zincData = {
   // 1. Fundamental Identity & Classification
   num: 30,
@@ -3900,10 +3868,10 @@ const zincData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Silicon burning process and alpha process integration within massive dying stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const galliumData = {
   // 1. Fundamental Identity & Classification
   num: 31,
@@ -4034,10 +4002,10 @@ const galliumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Neutron capture reactions via s-process and r-process branches in evolving stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const germaniumData = {
   // 1. Fundamental Identity & Classification
   num: 32,
@@ -4171,10 +4139,10 @@ const germaniumData = {
   goldschmidtClassification: "Lithophile / Chalcophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process and r-process) inside stellar evolutionary frameworks"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const arsenicData = {
   // 1. Fundamental Identity & Classification
   num: 33,
@@ -4304,10 +4272,10 @@ const arsenicData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process) in aging stars and stellar explosions"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const seleniumData = {
   // 1. Fundamental Identity & Classification
   num: 34,
@@ -4442,10 +4410,10 @@ const seleniumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Neutron capture reactions (s-process) inside red giant shell zones and r-process branches in stellar detonations"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const bromineData = {
   // 1. Fundamental Identity & Classification
   num: 35,
@@ -4576,10 +4544,10 @@ const bromineData = {
   goldschmidtClassification: "Chalcophile / Lithophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process) inside asymptotic giant branch stars and r-process branches in stellar explosions"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const kryptonData = {
   // 1. Fundamental Identity & Classification
   num: 36,
@@ -4714,10 +4682,10 @@ const kryptonData = {
   goldschmidtClassification: "Atmophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process) inside pulsating red giant stellar structures"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const rubidiumData = {
   // 1. Fundamental Identity & Classification
   num: 37,
@@ -4848,10 +4816,10 @@ const rubidiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process) in stellar envelopes and r-process variants in core collapses"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const strontiumData = {
   // 1. Fundamental Identity & Classification
   num: 38,
@@ -4984,10 +4952,10 @@ const strontiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Neutron capture reactions via s-process in massive low-to-intermediate-mass stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const yttriumData = {
   // 1. Fundamental Identity & Classification
   num: 39,
@@ -5117,10 +5085,10 @@ const yttriumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Neutron capture reactions (s-process and r-process branches) inside stellar nucleosynthesis engines"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const zirconiumData = {
   // 1. Fundamental Identity & Classification
   num: 40,
@@ -5254,10 +5222,10 @@ const zirconiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process) inside red giant shell operations"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const niobiumData = {
   // 1. Fundamental Identity & Classification
   num: 41,
@@ -5387,10 +5355,10 @@ const niobiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Neutron capture systems (s-process and r-process configurations) inside dying stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const molybdenumData = {
   // 1. Fundamental Identity & Classification
   num: 42,
@@ -5526,10 +5494,10 @@ const molybdenumData = {
   goldschmidtClassification: "Lithophile / Chalcophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process and r-process dynamics) inside evolving massive stellar shells"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const technetiumData = {
   // 1. Fundamental Identity & Classification
   num: 43,
@@ -5661,10 +5629,10 @@ const technetiumData = {
   goldschmidtClassification: "Chalcophile / Siderophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process mechanism) observed inside highly evolved asymptotic giant branch stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const rutheniumData = {
   // 1. Fundamental Identity & Classification
   num: 44,
@@ -5800,10 +5768,10 @@ const rutheniumData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process and r-process branches) within exploding supernovas and neutron star mergers"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const rhodiumData = {
   // 1. Fundamental Identity & Classification
   num: 45,
@@ -5933,10 +5901,10 @@ const rhodiumData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Neutron capture processing (r-process and s-process dynamics) inside stellar core degradation fields"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const palladiumData = {
   // 1. Fundamental Identity & Classification
   num: 46,
@@ -6071,10 +6039,10 @@ const palladiumData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process and r-process variants) in giant stars and stellar explosions"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const silverData = {
   // 1. Fundamental Identity & Classification
   num: 47,
@@ -6205,10 +6173,10 @@ const silverData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Neutron capture processing (primarily via r-process events in stellar disruptions and neutron star mergers, supplemented by s-process loops)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const cadmiumData = {
   // 1. Fundamental Identity & Classification
   num: 48,
@@ -6345,10 +6313,10 @@ const cadmiumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Neutron capture reactions via s-process tracks in red giant interior envelopes and r-process branches in stellar collapses"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const indiumData = {
   // 1. Fundamental Identity & Classification
   num: 49,
@@ -6479,10 +6447,10 @@ const indiumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Neutron capture processing (s-process and r-process branches) inside dying stellar configurations"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const tinData = {
   // 1. Fundamental Identity & Classification
   num: 50,
@@ -6621,10 +6589,10 @@ const tinData = {
   goldschmidtClassification: "Lithophile / Chalcophile",
   nucleosynthesisPathway: "Mainly formed via slow neutron capture processing (s-process dynamics) inside old stellar shells"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const antimonyData = {
   // 1. Fundamental Identity & Classification
   num: 51,
@@ -6755,10 +6723,10 @@ const antimonyData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Neutron capture processing (balanced division of r-process and s-process tracks) inside stellar generation cycles"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const telluriumData = {
   // 1. Fundamental Identity & Classification
   num: 52,
@@ -6895,10 +6863,10 @@ const telluriumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Mainly forged via rapid neutron capture reactions (r-process dynamics) in core collapses, augmented by s-process star branches"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const iodineData = {
   // 1. Fundamental Identity & Classification
   num: 53,
@@ -7028,10 +6996,10 @@ const iodineData = {
   goldschmidtClassification: "Chalcophile / Biophile",
   nucleosynthesisPathway: "Predominantly forged via rapid neutron capture processing (r-process dynamics) inside core collapses and star mergers"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const xenonData = {
   // 1. Fundamental Identity & Classification
   num: 54,
@@ -7169,10 +7137,10 @@ const xenonData = {
   goldschmidtClassification: "Atmophile",
   nucleosynthesisPathway: "Forged via slow and rapid stellar neutron capture processing (s-process and r-process steps) inside exploding supernovas and asymptotic giant branch star envelopes"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const cesiumData = {
   // 1. Fundamental Identity & Classification
   num: 55,
@@ -7302,10 +7270,10 @@ const cesiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged via rapid and slow neutron capture processes (r-process and s-process tracks) during cosmic supernova dynamics"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const bariumData = {
   // 1. Fundamental Identity & Classification
   num: 56,
@@ -7441,10 +7409,10 @@ const bariumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Mainly formed via slow neutron capture processing (s-process dynamics) inside old, low-mass stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const lanthanumData = {
   // 1. Fundamental Identity & Classification
   num: 57,
@@ -7575,10 +7543,10 @@ const lanthanumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Predominantly generated via slow neutron capture processing (s-process mechanics) within low-mass asymptotic giant branch stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const ceriumData = {
   // 1. Fundamental Identity & Classification
   num: 58,
@@ -7711,10 +7679,10 @@ const ceriumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged extensively via slow neutron capture processing (s-process loops) inside old giant stars, supplemented by supernova r-process branches"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const praseodymiumData = {
   // 1. Fundamental Identity & Classification
   num: 59,
@@ -7844,10 +7812,10 @@ const praseodymiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Mainly formed via slow neutron capture processing (s-process dynamics) inside low-mass asymptotic giant branch stars"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const neodymiumData = {
   // 1. Fundamental Identity & Classification
   num: 60,
@@ -7983,10 +7951,10 @@ const neodymiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Mainly forged via slow neutron capture processing (s-process dynamics) within old red giant stars, with notable contributions from supernova r-process branches"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const promethiumData = {
   // 1. Fundamental Identity & Classification
   num: 61,
@@ -8116,10 +8084,10 @@ const promethiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthetic fission fragment product or cosmic neutron capture decay looping tracking frames"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const samariumData = {
   // 1. Fundamental Identity & Classification
   num: 62,
@@ -8255,10 +8223,10 @@ const samariumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged collectively via r-process supernova stellar dynamics and s-process asymptotic giant branch stellar neutron captures"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const europiumData = {
   // 1. Fundamental Identity & Classification
   num: 63,
@@ -8389,10 +8357,10 @@ const europiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged via mixed s-process stellar loops and r-process branches during cataclysmic supernova events"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const gadoliniumData = {
   // 1. Fundamental Identity & Classification
   num: 64,
@@ -8528,10 +8496,10 @@ const gadoliniumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged prominently via rapid and slow neutron capture operations (r-process and s-process paths) during cosmic stellar updates"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const terbiumData = {
   // 1. Fundamental Identity & Classification
   num: 65,
@@ -8661,10 +8629,10 @@ const terbiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged via cosmic neutron capture processes (s-process and r-process branches) inside aging giant stars and supernovas"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const dysprosiumData = {
   // 1. Fundamental Identity & Classification
   num: 66,
@@ -8800,10 +8768,10 @@ const dysprosiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged via cosmic slow neutron capture processing (s-process) in AGB stars alongside rapid neutron capture cascades (r-process) in supernovae"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const holmiumData = {
   // 1. Fundamental Identity & Classification
   num: 67,
@@ -8933,10 +8901,10 @@ const holmiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged via cosmic slow neutron capture processing (s-process) in AGB stars alongside rapid neutron capture cascades (r-process) in supernovae"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const erbiumData = {
   // 1. Fundamental Identity & Classification
   num: 68,
@@ -9071,10 +9039,10 @@ const erbiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Generated via a combination of slow stellar neutron capture (s-process) in AGB stars and rapid neutron capture (r-process) during supernovae"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const thuliumData = {
   // 1. Fundamental Identity & Classification
   num: 69,
@@ -9204,10 +9172,10 @@ const thuliumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Generated via a combination of slow stellar neutron capture (s-process) in AGB stars and rapid neutron capture (r-process) during supernovae events"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const ytterbiumData = {
   // 1. Fundamental Identity & Classification
   num: 70,
@@ -9343,10 +9311,10 @@ const ytterbiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Generated via a combination of slow stellar neutron capture (s-process) in AGB stars and rapid neutron capture (r-process) during supernova explosions"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const lutetiumData = {
   // 1. Fundamental Identity & Classification
   num: 71,
@@ -9477,10 +9445,10 @@ const lutetiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged primarily via a combination of slow stellar neutron captures (s-process) in advanced AGB cycles and massive r-process supernova stellar updates"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const hafniumData = {
   // 1. Fundamental Identity & Classification
   num: 72,
@@ -9615,10 +9583,10 @@ const hafniumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Generated via a combination of slow stellar neutron captures (s-process) in aging stars and rapid neutron captures (r-process) in supernovae"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const tantalumData = {
   // 1. Fundamental Identity & Classification
   num: 73,
@@ -9749,10 +9717,10 @@ const tantalumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged primarily through stellar slow neutron capture (s-process) in low-mass AGB stars and rapid neutron capture (r-process) during neutron star mergers"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const tungstenData = {
   // 1. Fundamental Identity & Classification
   num: 74,
@@ -9886,10 +9854,10 @@ const tungstenData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged primarily via slow stellar neutron capture (s-process) inside red giant stars, supplemented by rapid neutron capture (r-process) during stellar mergers"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const rheniumData = {
   // 1. Fundamental Identity & Classification
   num: 75,
@@ -10020,10 +9988,10 @@ const rheniumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Forged extensively through cosmic rapid neutron capture cascades (r-process) during binary neutron star collisions and supernovas"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const osmiumData = {
   // 1. Fundamental Identity & Classification
   num: 76,
@@ -10159,10 +10127,10 @@ const osmiumData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Forged via rapid neutron capture processes (r-process) in violent neutron star collisions and supernovae events"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const iridiumData = {
   // 1. Fundamental Identity & Classification
   num: 77,
@@ -10293,10 +10261,10 @@ const iridiumData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Forged via cosmic rapid neutron capture branches (r-process) during extreme neutron star collisions and supernovae events"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const platinumData = {
   // 1. Fundamental Identity & Classification
   num: 78,
@@ -10431,10 +10399,10 @@ const platinumData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Forged extensively via rapid cosmic neutron capture cascades (r-process) during binary neutron star collisions and supernovae"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const goldData = {
   // 1. Fundamental Identity & Classification
   num: 79,
@@ -10564,10 +10532,10 @@ const goldData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Forged during cosmic rapid neutron capture cascades (r-process) inside dramatic binary neutron star collisions and core-collapse supernovae events"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const mercuryData = {
   // 1. Fundamental Identity & Classification
   num: 80,
@@ -10703,10 +10671,10 @@ const mercuryData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Generated primarily via rapid cosmic neutron capture branches (r-process) during stellar explosions, along with minor slow neutron adjustments (s-process)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const thalliumData = {
   // 1. Fundamental Identity & Classification
   num: 81,
@@ -10837,10 +10805,10 @@ const thalliumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Forged primarily via slow stellar neutron capture (s-process) in late-stage giant stars, with supplementary rapid capture (r-process) inputs from cosmic explosions"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const leadData = {
   // 1. Fundamental Identity & Classification
   num: 82,
@@ -10973,10 +10941,10 @@ const leadData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Acts as the ultimate cosmic graveyard for heavy element radioactive decay; naturally generated via the stellar slow neutron capture process (s-process) and rapid capture process (r-process)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const bismuthData = {
   // 1. Fundamental Identity & Classification
   num: 83,
@@ -11106,10 +11074,10 @@ const bismuthData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Represents the absolute termination point of the stellar slow neutron capture process (s-process) in heavy giant stars, beyond which alpha-decay cycling prevents further stable accumulation"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const poloniumData = {
   // 1. Fundamental Identity & Classification
   num: 84,
@@ -11240,10 +11208,10 @@ const poloniumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Formed solely via ongoing natural radioactive planetary decay cascades from ancestral primordial uranium and thorium elements"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const astatineData = {
   // 1. Fundamental Identity & Classification
   num: 85,
@@ -11374,10 +11342,10 @@ const astatineData = {
   goldschmidtClassification: "Chalcophile", // Tends to bind alongside heavy metals and sulfur groupings rather than pure halogens
   nucleosynthesisPathway: "Generated solely as a fleeting, temporary branch during the ongoing radioactive decay cascades of primordial terrestrial uranium and actinium minerals"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const radonData = {
   // 1. Fundamental Identity & Classification
   num: 86,
@@ -11509,10 +11477,10 @@ const radonData = {
   goldschmidtClassification: "Atmophile",
   nucleosynthesisPathway: "Continuously replenished in planetary crusts via ongoing radioactive decay lines starting from ancestral primordial uranium-238 and thorium-232 nuclides"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const franciumData = {
   // 1. Fundamental Identity & Classification
   num: 87,
@@ -11643,10 +11611,10 @@ const franciumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Continuously sustained in planetary matrices solely as a brief intermediate step within the radioactive decay chains of ancestral uranium-235/actinium-227"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const radiumData = {
   // 1. Fundamental Identity & Classification
   num: 88,
@@ -11779,10 +11747,10 @@ const radiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Continuously replenished across terrestrial environments through the passive, ongoing radioactive breakdown chains of primordial uranium-238 and thorium-232"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const actiniumData = {
   // 1. Fundamental Identity & Classification
   num: 89,
@@ -11913,10 +11881,10 @@ const actiniumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Continuously sustained across mineral matrices via the slow, natural radioactive decay cascades of ancestral primordial uranium-235"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const thoriumData = {
   // 1. Fundamental Identity & Classification
   num: 90,
@@ -12048,10 +12016,10 @@ const thoriumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged via rapid cosmic neutron capture cascades (r-process) during violent binary neutron star mergers and core-collapse supernovae events"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const protactiniumData = {
   // 1. Fundamental Identity & Classification
   num: 91,
@@ -12182,10 +12150,10 @@ const protactiniumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Continuously maintained inside terrestrial deposits solely as a fleeting intermediate branch within the natural radioactive decay chain of primordial uranium-235"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const uraniumData = {
   // 1. Fundamental Identity & Classification
   num: 92,
@@ -12317,10 +12285,10 @@ const uraniumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Forged exclusively during cosmic rapid neutron capture cascades (r-process) within extreme energetic events like binary neutron star collisions and core-collapse supernovae"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const neptuniumData = {
   // 1. Fundamental Identity & Classification
   num: 93,
@@ -12451,10 +12419,10 @@ const neptuniumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthetically bred via targeted neutron irradiation of uranium fuel matrices within nuclear reactors; naturally generated only as a brief step in rare crustal neutron-capture anomalies"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const plutoniumData = {
   // 1. Fundamental Identity & Classification
   num: 94,
@@ -12586,10 +12554,10 @@ const plutoniumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Bred artificially via continuous neutron capture in nuclear reactors; minor historical trace levels created via cosmic r-process events before solar system formulation"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const americiumData = {
   // 1. Fundamental Identity & Classification
   num: 95,
@@ -12720,10 +12688,10 @@ const americiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthetically bred via intensive multi-neutron absorption cascades initiated upon uranium/plutonium target matrices inside nuclear reactors"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const curiumData = {
   // 1. Fundamental Identity & Classification
   num: 96,
@@ -12855,10 +12823,10 @@ const curiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthetically manufactured through sequential, high-flux multi-neutron capture reactions initiated on plutonium or americium targets inside specialized nuclear reactors"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const berkeliumData = {
   // 1. Fundamental Identity & Classification
   num: 97,
@@ -12989,10 +12957,10 @@ const berkeliumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthetically built inside high-flux nuclear reactors through intensive, long-term multi-neutron bombardment cascades starting from ancestral plutonium or curium matrices"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const californiumData = {
   // 1. Fundamental Identity & Classification
   num: 98,
@@ -13124,10 +13092,10 @@ const californiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthesized in high-flux nuclear infrastructure via multi-year continuous neutron bombardment of plutonium or curium matrices"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const einsteiniumData = {
   // 1. Fundamental Identity & Classification
   num: 99,
@@ -13259,10 +13227,10 @@ const einsteiniumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthesized in microgram quantities via long-term, intensive high-flux neutron irradiation cascades tracking from heavy transuranic targets inside specialized global research reactors"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const fermiumData = {
   // 1. Fundamental Identity & Classification
   num: 100,
@@ -13393,10 +13361,10 @@ const fermiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthesized in sub-picogram amounts via continuous, multi-year high-flux neutron irradiation of plutonium/californium target arrays inside highly specialized global reactors"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const mendeleviumData = {
   // 1. Fundamental Identity & Classification
   num: 101,
@@ -13527,10 +13495,10 @@ const mendeleviumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthesized in atom-level amounts via cyclotron light-ion bombardment ($^{253}_{99}Es + ^{4}_{2}He \rightarrow ^{256}_{101}Md + ^{1}_{0}n$) inside specialized particle accelerator targets"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const nobeliumData = {
   // 1. Fundamental Identity & Classification
   num: 102,
@@ -13661,10 +13629,10 @@ const nobeliumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthesized in fleeting, trace atom amounts inside heavy-ion cyclotrons through fusion reactions ($^{248}_{96}Cm + ^{12}_{6}C \rightarrow ^{254}_{102}No + 6^{1}_{0}n$) behind advanced gas-filled separator lines"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const lawrenciumData = {
   // 1. Fundamental Identity & Classification
   num: 103,
@@ -13796,10 +13764,10 @@ const lawrenciumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthesized in vanishingly faint, atom-by-atom yields within heavy-ion particle accelerators via targeted fusion reactions ($^{249}_{98}Cf + ^{11}_{5}B \rightarrow ^{256}_{103}Lr + 4^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const rutherfordiumData = {
   // 1. Fundamental Identity & Classification
   num: 104,
@@ -13930,10 +13898,10 @@ const rutherfordiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted fusion-evaporation reactions ($^{249}_{98}Cf + ^{12}_{6}C \rightarrow ^{257}_{104}Rf + 4^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const dubniumData = {
   // 1. Fundamental Identity & Classification
   num: 105,
@@ -14064,10 +14032,10 @@ const dubniumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthesized in vanishingly faint, atom-by-atom yields within heavy-ion accelerators via targeted fusion reactions ($^{249}_{98}Cf + ^{15}_{7}N \rightarrow ^{260}_{105}Db + 4^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const seaborgiumData = {
   // 1. Fundamental Identity & Classification
   num: 106,
@@ -14198,10 +14166,10 @@ const seaborgiumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthesized in vanishingly faint, atom-by-atom yields within heavy-ion accelerators via targeted fusion reactions ($^{249}_{98}Cf + ^{22}_{10}Ne \rightarrow ^{266}_{106}Sg + 5^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const bohriumData = {
   // 1. Fundamental Identity & Classification
   num: 107,
@@ -14332,10 +14300,10 @@ const bohriumData = {
   goldschmidtClassification: "Lithophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted cold or hot fusion-evaporation reactions ($^{209}_{83}Bi + ^{54}_{24}Cr \rightarrow ^{262}_{107}Bh + ^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const hassiumData = {
   // 1. Fundamental Identity & Classification
   num: 108,
@@ -14466,10 +14434,10 @@ const hassiumData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted cold fusion-evaporation reactions ($^{208}_{82}Pb + ^{58}_{26}Fe \rightarrow ^{265}_{108}Hs + ^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const meitneriumData = {
   // 1. Fundamental Identity & Classification
   num: 109,
@@ -14600,10 +14568,10 @@ const meitneriumData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted cold fusion-evaporation reactions ($^{209}_{83}Bi + ^{58}_{26}Fe \rightarrow ^{266}_{109}Mt + ^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const darmstadtiumData = {
   // 1. Fundamental Identity & Classification
   num: 110,
@@ -14734,10 +14702,10 @@ const darmstadtiumData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted cold fusion-evaporation reactions ($^{208}_{82}Pb + ^{64}_{28}Ni \rightarrow ^{271}_{110}Ds + ^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const roentgeniumData = {
   // 1. Fundamental Identity & Classification
   num: 111,
@@ -14868,10 +14836,10 @@ const roentgeniumData = {
   goldschmidtClassification: "Siderophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted cold fusion-evaporation reactions ($^{209}_{83}Bi + ^{64}_{28}Ni \rightarrow ^{272}_{111}Rg + ^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const coperniciumData = {
   // 1. Fundamental Identity & Classification
   num: 112,
@@ -15002,10 +14970,10 @@ const coperniciumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted cold fusion-evaporation reactions ($^{208}_{82}Pb + ^{70}_{30}Zn \rightarrow ^{277}_{112}Cn + ^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const nihoniumData = {
   // 1. Fundamental Identity & Classification
   num: 113,
@@ -15136,10 +15104,10 @@ const nihoniumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted cold fusion-evaporation reactions ($^{209}_{83}Bi + ^{70}_{30}Zn \rightarrow ^{278}_{113}Nh + ^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const fleroviumData = {
   // 1. Fundamental Identity & Classification
   num: 114,
@@ -15270,10 +15238,10 @@ const fleroviumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted hot fusion-evaporation reactions ($^{244}_{94}Pu + ^{48}_{20}Ca \rightarrow ^{289}_{114}Fl + 3^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const moscoviumData = {
   // 1. Fundamental Identity & Classification
   num: 115,
@@ -15404,10 +15372,10 @@ const moscoviumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted hot fusion-evaporation reactions ($^{243}_{95}Am + ^{48}_{20}Ca \rightarrow ^{288}_{115}Mc + 3^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const livermoriumData = {
   // 1. Fundamental Identity & Classification
   num: 116,
@@ -15538,10 +15506,10 @@ const livermoriumData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted hot fusion-evaporation reactions ($^{248}_{96}Cm + ^{48}_{20}Ca \rightarrow ^{293}_{116}Lv + 3^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const tennessineData = {
   // 1. Fundamental Identity & Classification
   num: 117,
@@ -15672,10 +15640,10 @@ const tennessineData = {
   goldschmidtClassification: "Chalcophile",
   nucleosynthesisPathway: "Synthesized in fleeting, atom-by-atom yields within heavy-ion accelerators via targeted hot fusion-evaporation reactions ($^{249}_{97}Bk + ^{48}_{20}Ca \rightarrow ^{294}_{117}Ts + 3^{1}_{0}n$)"
 };
-next all
+  
 
-JavaScript
-// data.js
+  
+ 
 const oganessonData = {
   // 1. Fundamental Identity & Classification
   num: 118,
