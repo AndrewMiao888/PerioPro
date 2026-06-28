@@ -13,6 +13,6 @@ Interactive Periodic Table: A dynamic, responsive interface featuring advanced d
 
 Integrated Digital Textbook: Built-in educational resources that provide deep, contextual insights into chemical concepts, removing the need for external reference material.
 
-Customizable Retrieval Practice Engine: A tailored quiz and flashcard system based on active recall principles, helping users test their knowledge and reinforce long-term retention.
+Customisable Retrieval Practice Engine: A tailored quiz and flashcard system based on active recall principles, helping users test their knowledge and reinforce long-term retention.
 
 Clean & Modular Codebase: Built with a highly organized file structure, featuring well-documented CSS and source files to ensure seamless debugging and scalability.
